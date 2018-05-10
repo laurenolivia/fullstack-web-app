@@ -14,7 +14,6 @@ db = SQLAlchemy()
 
 ###############################################################################
 #Model definitions
-
 class User(db.Model):
     """User account info"""
     __tablename__ = "users"
@@ -26,7 +25,7 @@ class User(db.Model):
     lname = db.Column(db.String(64))
     username = db.Column(db.String(64), unique=True, nullable=False)
     password = db.Column(db.String(64), nullable=False)
-    events = db.relationship('Events', backref='user') # <-- is this right?
+    
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -36,17 +35,18 @@ class User(db.Model):
                     user_id=self.user_id, fname=self.fname, lname=self.lname,
                     username=self.username, password=self.password)
 
+
 class Type(db.Model):
     """Poop types"""
 
     __tablename__ = "types"
 
     type_id = db.Column(db.Integer, 
-                        autoincrement=True, #should this autoincrement?
+                        autoincrement=True,
                         primary_key=True)
     type_name = db.Column(db.String(8), nullable=False)
-    type_img = db.Column(db.LargeBinary, nullable=False)  # <--- what datatype?
-    type_description = db.Column(db.String(256), nullable=False)
+    type_img = db.Column(db.String(64), nullable=True)  # <--- TODO: nullable=False
+    type_description = db.Column(db.String(256), nullable=True) # <-- TODO: nullable=False
 
     def __repr__(self):
 
@@ -54,6 +54,7 @@ class Type(db.Model):
                 type_description={description}>".format(id=self.type_id,
                 name=self.type_name, img=self.type_img,
                 description=self.type_description)
+
 
 class Event(db.Model):
     """User poop events"""
@@ -67,6 +68,12 @@ class Event(db.Model):
     type_id = db.Column(db.Integer, db.ForeignKey('types.type_id'))
     event_at = db.Column(db.DateTime)
     comment = db.Column(db.String(256))
+    
+    user_events = db.relationship('User', backref='user') #backref gets all user info
+    event_type = db.relationship('Type', backref='type') 
+
+
+
 
 #<---------------------------------------------------------------------------->
     # Helper functions
