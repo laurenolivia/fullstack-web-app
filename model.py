@@ -1,5 +1,6 @@
 """Models and functions for database"""
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 # This is the connection to the PostgreSQL database;
 # We're getting this through the Flask_SQLAlchemy helper library;
@@ -69,8 +70,8 @@ class Event(db.Model):
     event_at = db.Column(db.DateTime)
     comment = db.Column(db.String(256))
 
-    user_event = db.relationship('User', backref='events') #backref gets all user info
-    event_type = db.relationship('Type', backref='events') 
+    user_event = db.relationship('User', backref="users") #backref gets all user info
+    event_type = db.relationship('Type', backref="types") 
 
 
 

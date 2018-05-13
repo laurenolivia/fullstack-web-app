@@ -1,8 +1,7 @@
+# from sqlalchemy import func
 from model import User, Event, Type, connect_to_db, db
-# from flask_sqlalchemy import SQLAlchemy 
-from server import app
 import datetime
-
+from server import app
 
 def seed_data():
 
@@ -19,26 +18,33 @@ def seed_data():
     type_6 = Type(type_name='Type 6', type_description='this is type 6')
     type_7 = Type(type_name='Type 7', type_description='this is type 7')
 
-    event_1 = Event(user_event=user_1, event_type=type_1, comment='hard balls')
-    event_2 = Event(user_event=user_1, event_type=type_3, comment='sausage-shaped, cracks')
-    event_3 = Event(user_event=user_2, event_type=type_6, comment='fluffy pieces')
-    event_4 = Event(user_event=user_3, event_type=type_1, comment='hard balls')
-    
-
-
-
     db.session.add_all([user_1, user_2, user_3, user_4, \
                     type_1, type_2, type_3, type_4, \
-                    type_4, type_5, type_6, type_7, \
-                    event_1, event_2, event_3, event_4])
-    
-    db.session.commit()
+                    type_4, type_5, type_6, type_7,]) 
+    db.session.commit()                    
+        
+    def event_data():
+
+        event_1 = Event(user_id=user_1.user_id, type_id=type_1.type_id, comment='hard balls')
+        event_2 = Event(user_id=user_1_user_id, type_id=type_3.type_id, comment='sausage-shaped, cracks')
+        event_3 = Event(user_id=user_2.user_id, type_id=type_6.type_id, comment='fluffy pieces')
+        event_4 = Event(user_id=user_3.user_id, type_id=type_1.type_id, comment='hard balls')
+        
+        db.session.add_all([event_1, event_2, event_3, event_4])
+        db.session.commit()
 
 
 
-# error no flask_sqlalchemy found line 2 model
-# recreated virtualenv which deletes everything I pip installed
 
-#how to populate events table since it has two foreign keys
+if __name__ = "__main__":
+    connect_to_db(app)
 
-# and relationships with two tables
+    #create tables
+    db.create_all()
+
+    #import data 
+    seed_data()        
+
+
+
+
