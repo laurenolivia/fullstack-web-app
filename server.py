@@ -23,6 +23,18 @@ def register_form():
 
     return render_template('register.html')
 
+@app.route("/validate_registration", method="POST")
+def validate_registration():
+    """Add new user to db"""
+    first = request.form.get("First")
+    last = request.form.get("Last")
+    username = request.form.get("Username")
+    password = request.form.get("Password")
+
+    
+    
+    return render_template("login.html")    
+
 @app.route("/login")
 def prompt_login():
     """Prompt user to login"""
