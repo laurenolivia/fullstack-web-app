@@ -4,11 +4,11 @@ import datetime
 from server import app
 
 class Seed_Data(object):
-
-    User.query.delete()     #if running multiple times, delete to avoid dup 
-    Type.query.delete()
     
     def __init__(self):
+        User.query.delete()     #if running multiple times, delete to avoid dup 
+        Type.query.delete()
+        
         self.user_1 = User(fname='Lauren', lname='Burwell', username='lburwell', password='lburwell')                
         self.user_2 = User(fname='Jess', lname='Koss', username='jkoss', password='jkoss')
         self.user_3 = User(fname='Melvin', lname='Mitchell', username='mmitchell', password='mmitchell')
@@ -32,10 +32,14 @@ class Seed_Data(object):
 
         Event.query.delete()
 
-        event_1 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, comment='hard balls')
-        event_2 = Event(user_id=self.user_1.user_id, type_id=self.type_3.type_id, comment='sausage-shaped, cracks')
-        event_3 = Event(user_id=self.user_2.user_id, type_id=self.type_6.type_id, comment='fluffy pieces')
-        event_4 = Event(user_id=self.user_3.user_id, type_id=self.type_1.type_id, comment='hard balls')
+        event_1 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                         comment='hard balls', event_at='2018-01-24T13:45:12')
+        event_2 = Event(user_id=self.user_1.user_id, type_id=self.type_3.type_id, \
+                        comment='sausage-shaped, cracks', event_at='2018-03-11T13:45:12')
+        event_3 = Event(user_id=self.user_2.user_id, type_id=self.type_6.type_id, \
+                        comment='fluffy pieces', event_at='2018-05-14T13:40:00')
+        event_4 = Event(user_id=self.user_3.user_id, type_id=self.type_1.type_id, \
+                        comment='hard balls', event_at='2018-02-22T09:45:12')
         
         db.session.add_all([event_1, event_2, event_3, event_4])
         db.session.commit()
@@ -50,8 +54,8 @@ if __name__ == "__main__":
     db.create_all()
 
     #import User, Type, Event data 
-    # seed_data = Seed_Data()        
-    # event_data()
+    seed_data = Seed_Data()        
+    seed_data.event_data()
 
 
 
