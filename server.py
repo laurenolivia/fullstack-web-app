@@ -10,7 +10,7 @@ app.secret_key = "thisisasecret"
 #raise an error if jinja attributes don't exist
 app.jinja_env.undefined = StrictUndefined  
 
-@app.route('/homepage')
+@app.route('/home')
 def index():
     """Homepage"""
 

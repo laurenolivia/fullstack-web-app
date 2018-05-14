@@ -2,16 +2,15 @@
 
 {% block content %} 
 
+<h2>WELCOME</h2>
 
-<h1>LOGIN PAGE</h1>
-
-<form action='/register', method=POST>
-    Username: <input type="text" name="Username" required>
-    Password: <input type="text" name="Password" required>
-    <input type="submit" name="Submit">
+<form action="/register">
+    <input type="submit" name="Register">
 </form>
 
-
+<form action="/login">
+    <input type="submit" name="Login">
+</form>
 
 
 {% endblock %}
