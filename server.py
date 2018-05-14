@@ -7,13 +7,23 @@ app = Flask(__name__)
 
 app.secret_key = "thisisasecret"
 
-app.jinja_env.undefined = StrictUndefined
+#raise an error if jinja attributes don't exist
+app.jinja_env.undefined = StrictUndefined  
 
-@app.route('/')
+@app.route('/homepage')
 def index():
     """Homepage"""
 
     return render_template('homepage.html')
+
+#allow user to register info in db
+@app.route('/register', method=["GET"])
+def register_form():
+    """requests username, password"""
+
+
+    return render_template('homepage.html')
+
 
 
 
