@@ -23,23 +23,57 @@ def register_form():
 
     return render_template('register.html')
 
-@app.route("/validate_registration", method="POST")
+@app.route("/validate_registration", methods="POST")
 def validate_registration():
     """Add new user to db"""
-    first = request.form.get("First")
-    last = request.form.get("Last")
+    first_name = request.form.get("First")
+    last_name = request.form.get("Last")
     username = request.form.get("Username")
     password = request.form.get("Password")
 
-    
-    
+    user = User.query.get(username=username).first()
+
+    if user:
+        flash("An account with this username already exists.")
+        redirect('/login')
+    else:
+        new_user = User(fname=first_name, lname=last_name, \
+                            username=username, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        flash("You are now registered. Please log in!")
+   
     return render_template("login.html")    
+
 
 @app.route("/login")
 def prompt_login():
     """Prompt user to login"""
 
+
     return render_template("login.html")
+
+@app.route("/validate_login", methods="POST")
+def validate_login():
+    """validate username password"""
+
+    username = request.form.get("Username")
+    password = request.form.get("Password")
+
+    user = User.query.get(username=username).first()
+
+    if user:
+        if password == user.password:
+            session['user'] = user.user_id
+            flash("You are logged in.")
+            redirect("/user_account")
+        else:
+            flash("Invalid password. Please try again.")
+            redirect("/login")
+
+    else:
+        flash("Username does not exist.")
+        redirect("/home")            
 
 
 @app.route("/user_account")
