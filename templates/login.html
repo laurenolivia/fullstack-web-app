@@ -1,10 +1,16 @@
-{%  extends "base.html %}
+{%  extends "base.html" %}
 
 {% block content %}
 
 <h2>LOGIN HERE</h2>
 
+<form action="/user_account", method="POST">
+    Username: <input type="text" name="Username">
+    <br>
+    Password: <input type="text" name="Password">
+    <input type="submit" name="Submit">
 
+</form>
 
 
 
