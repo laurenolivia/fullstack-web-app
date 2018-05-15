@@ -1,7 +1,7 @@
 from jinja2 import StrictUndefined
 from flask import Flask, render_template, redirect, request, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db 
+from model import User, Type, Event, connect_to_db, db 
 
 app = Flask(__name__)
 
@@ -61,7 +61,7 @@ def prompt_login():
     return render_template("login.html")
 
 
-@app.route("/validate_login", methods="POST")
+@app.route("/validate_login", methods=["POST"])
 def validate_login():
     """validate username and password"""
 
