@@ -68,7 +68,7 @@ def validate_login():
     username = request.form.get("Username")
     password = request.form.get("Password")
 
-    user = User.query.get(username=username).first()
+    user = User.query.filter_by(username=username).first()
 
     if user:
         if password == user.password:
