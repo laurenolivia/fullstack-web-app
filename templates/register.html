@@ -6,15 +6,16 @@
 <h2>Please Register</h2>
 
 <form action="/validate_registration" method="POST">
-    First Name: <input type="text" name="First">
+    First Name: <input type="text" name="First" required>
     <br>
     Last Name: <input type="text" name="Last">
     <br>
-    Username: <input type="text" name="Username">
+    Username: <input type="text" name="Username" required>
     <br>
-    Password: <input type="text" name="Password">
+    Password: <input type="text" name="Password" required>
     <br>
     <input type="submit" name="Submit">
 </form>
+
 
 {% endblock %}

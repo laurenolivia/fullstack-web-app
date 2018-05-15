@@ -28,7 +28,7 @@ def register_form():
     #GET data and send to /validate_registration
     return render_template('register.html')
 
-@app.route("/validate_registration", methods="POST")
+@app.route("/validate_registration", methods=["POST"])
 def validate_registration():
     """Validate user and new user to db"""
 
@@ -38,12 +38,11 @@ def validate_registration():
     password = request.form.get("Password")
 
     #query for username in db, return first instance
-    user = User.query.get(username=username).first()
+    user = User.query.filter_by(username=username).first()
 
     #if user already in db, flash and redirect to /login
     if user:
         flash("An account with this username already exists.")
-        return redirect('/login')
     else:
         #otherwise create new instance of new user
         new_user = User(fname=first_name, lname=last_name, \
@@ -51,7 +50,7 @@ def validate_registration():
         db.session.add(new_user)
         db.session.commit()
         flash("{} now registered. Please log in!".format(username))
-        return redirect("/login") 
+    return redirect("/login") 
 
 
 @app.route("/login")
@@ -61,7 +60,7 @@ def prompt_login():
     return render_template("login.html")
 
 
-@app.route("/validate_login", methods=["POST"])
+@app.route("/login", methods=["POST"])
 def validate_login():
     """validate username and password"""
 
@@ -83,24 +82,30 @@ def validate_login():
         flash("Username not found. Please try again.")
         return redirect("/home")    
 
-@app.route("/logout")
-def logout():
-    """Log out user, remove from session"""
-
-    del session["user"]
-    flash("You have been logged out. Have a wonderful day!")
-    return redirect("/home")                
-
 
 @app.route("/user_account")
 def display_account():
     """Display user page"""
 
-    if user in session:
+    if session.get('user'):
         return render_template("user_account.html")
     else:
         flash("Not logged in.")
-        return redirect("/home")            
+        return redirect("/home")       
+
+
+@app.route("/logout")
+def logout():
+    """Log out user, remove from session"""
+
+    if session.get('user'):
+        del session['user']
+        flash("You have been logged out. Have a wonderful day!")
+        return redirect("/home")
+    else:
+        flash("You are logged out.")
+        return redirect("/home")                    
+
 
 
 
