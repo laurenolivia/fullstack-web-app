@@ -1,5 +1,5 @@
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db 
 
@@ -50,22 +50,20 @@ def validate_registration():
                             username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
-        flash("You are now registered. Please log in!")
-        return redirect("/login")
-   
-    return render_template("login.html")    
+        flash("{} now registered. Please log in!".format(username))
+        return redirect("/login") 
 
 
 @app.route("/login")
 def prompt_login():
     """Prompt user to login"""
 
-
     return render_template("login.html")
+
 
 @app.route("/validate_login", methods="POST")
 def validate_login():
-    """validate username password"""
+    """validate username and password"""
 
     username = request.form.get("Username")
     password = request.form.get("Password")
@@ -76,21 +74,33 @@ def validate_login():
         if password == user.password:
             session['user'] = user.user_id
             flash("You are logged in.")
-            redirect("/user_account")
+            return redirect("/user_account")
         else:
             flash("Invalid password. Please try again.")
-            redirect("/login")
+            return redirect("/login")
 
     else:
-        flash("Username does not exist.")
-        redirect("/home")            
+        flash("Username not found. Please try again.")
+        return redirect("/home")    
+
+@app.route("/logout")
+def logout():
+    """Log out user, remove from session"""
+
+    del session["user"]
+    flash("You have been logged out. Have a wonderful day!")
+    return redirect("/home")                
 
 
 @app.route("/user_account")
 def display_account():
     """Display user page"""
 
-    return render_template("user_account.html")
+    if user in session:
+        return render_template("user_account.html")
+    else:
+        flash("Not logged in.")
+        return redirect("/home")            
 
 
 
