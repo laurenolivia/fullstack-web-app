@@ -14,34 +14,44 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Homepage"""
 
+    #display homepage with two buttons
+    #register btn routes to /register page
+    #login btn routes to /login
     return render_template('homepage.html')
 
-#allow user to register info in db
+
 @app.route('/register')
 def register_form():
-    """requests username, password"""
+    """Requests username, password"""
 
+    #render page with form
+    #GET data and send to /validate_registration
     return render_template('register.html')
 
 @app.route("/validate_registration", methods="POST")
 def validate_registration():
-    """Add new user to db"""
+    """Validate user and new user to db"""
+
     first_name = request.form.get("First")
     last_name = request.form.get("Last")
     username = request.form.get("Username")
     password = request.form.get("Password")
 
+    #query for username in db, return first instance
     user = User.query.get(username=username).first()
 
+    #if user already in db, flash and redirect to /login
     if user:
         flash("An account with this username already exists.")
-        redirect('/login')
+        return redirect('/login')
     else:
+        #otherwise create new instance of new user
         new_user = User(fname=first_name, lname=last_name, \
                             username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
         flash("You are now registered. Please log in!")
+        return redirect("/login")
    
     return render_template("login.html")    
 

@@ -7,7 +7,15 @@
     Track Your Poop Health
     <hr>
 
+    <ul>
+        {% for message in get_flash_messages() %}
+        <li>{{ message }}</li>
+        {% endfor %}
+
+    </ul>
+
     {% block content %} ENTER PAGE CONTENT HERE {% endblock %}
+        
 
 </body>
 </html>
