@@ -63,7 +63,8 @@ if __name__ == "__main__":
     #create tables
     db.create_all()
 
-    #import User, Type, Event data 
+    #create instance (seed_data) on class (Seed_Data()) and call
+    #call event_data() method on instance
     seed_data = Seed_Data()        
     seed_data.event_data()
 

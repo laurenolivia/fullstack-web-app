@@ -88,28 +88,30 @@ def validate_login():
 
 @app.route("/user_account", methods=["GET"])    
 def display_data():
+    """Display poop events on user page"""
 
     if session.get('user'):
-        user_id = session.get('user')
-        user = User.query.get(user_id)
+        user_id = session.get('user')  # <-- why get same num twice?
+        user = User.query.get(user_id) # <-- why get same num twice?
         user_events = Event.query.filter_by(user_id=user_id).all()
         return render_template("user_account.html", 
-                                user_events=user_events)
+                                user_events=user_events, user_id=user_id)
     else:
         flash("Not logged in.")
         return redirect("/home")
     
 
 
-@app.route("/user_account", methods=["POST"])
+@app.route("/user_account", methods=["GET","POST"])
 def submit_data():
-    """Display user page"""
+    """User adds new poop event"""
 
+    user_id = session.get("user")
     poop_type = request.form.get("type")
-    print poop_type
     comment = request.form.get("comment")
-    new_event = Event(comment=comment, event_at=datetime.datetime.now(),
-                        type_id=int(poop_type))
+    new_event = Event(user_id=user_id, comment=comment, 
+                        event_at=datetime.datetime.now(), 
+                            type_id=int(poop_type))
     
     db.session.add(new_event)
     db.session.commit()
