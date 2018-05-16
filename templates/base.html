@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dump</title>
+    {% block head %}
+    <title> {% block title %} {% endblock %}Dump</title>
+    
+    {% endblock %}
 </head>
 <body>
+    {% block body %}
+    
     Track Your Poop Health
-    <hr>
+    <hr> 
+    
+    {% endblock %}
 
     <ul>
         {% for message in get_flashed_messages() %}
@@ -13,7 +20,6 @@
         {% endfor %}
 
     </ul>
-
 
     {% block content %} ENTER PAGE CONTENT HERE {% endblock %}
         

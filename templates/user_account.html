@@ -1,16 +1,56 @@
 {% extends "base.html" %}
 
 
+{% block body %}
+    
+Welcome, {{ session['fname'] }}!
+<hr> 
+    
+{% endblock %}
+
+
 {% block content %}
 
 <form action="/logout">
-    
     <input type="submit" name="Submit" value="Logout">
 </form>
 
-<h4>User Homepage</h4>
 
-<h4>PROMPT USER TO CREATE POOP EVENT</h4>
+<div id="enter_data">
+
+<p>Enter Today's Data:</p>
+
+<form action="/user_account" method="POST">
+
+    <input type="radio" name="type" value="Type 1">Type 1
+    <input type="radio" name="type" value="Type 2">Type 2
+    <input type="radio" name="type" value="Type 3">Type 3
+    <input type="radio" name="type" value="Type 4">Type 4
+    <input type="radio" name="type" value="Type 5">Type 5
+    <input type="radio" name="type" value="Type 6">Type 6
+    <input type="radio" name="type" value="Type 7">Type 7
+
+    <div>
+        <p>Additional Comments:</p>
+        <textarea name="comments"></textarea>
+    </div>
+    
+    <input type="submit" name="Submit">
+
+</form>
+
+
+</div>
+
+
+<div id="display_data">
+
+<p>New div: the bottom half of page where poop data will display
+try to update data without reloading page</p>
+
+
+</div>
+
 
 
 {% endblock %}

@@ -72,6 +72,7 @@ def validate_login():
     if user:
         if password == user.password:
             session['user'] = user.user_id
+            session['fname'] = user.fname 
             flash("You are logged in.")
             return redirect("/user_account")
         else:
@@ -83,7 +84,7 @@ def validate_login():
         return redirect("/home")    
 
 
-@app.route("/user_account")
+@app.route("/user_account", methods=["GET","POST"])
 def display_account():
     """Display user page"""
 
@@ -91,7 +92,11 @@ def display_account():
         return render_template("user_account.html")
     else:
         flash("Not logged in.")
-        return redirect("/home")       
+        return redirect("/home")
+
+    poop_type = request.form.get("type")    
+
+
 
 
 @app.route("/logout")
