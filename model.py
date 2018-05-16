@@ -78,7 +78,7 @@ class Event(db.Model):
         return "<event_id={event_id} user_id={user_id} \
                     type_id={type_id} event_at={event_at} \
                         comment={comment}>".format(event_id=self.event_id,
-                                user_id=self.user_id, type_id=self.type_id,\
+                                user_id=self.user_id, type_id=self.type_id,
                                  event_at=self.event_at, comment=self.comment)
 
 

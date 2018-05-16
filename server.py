@@ -2,6 +2,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, redirect, request, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from model import User, Type, Event, connect_to_db, db 
+import datetime
 
 app = Flask(__name__)
 
@@ -89,14 +90,18 @@ def display_account():
     """Display user page"""
 
     poop_type = request.form.get("type")
-    comments = request.form.get("comments")
+    comment = request.form.get("comment")
+    new_event = Event(comment=comment, event_at=datetime.datetime.now(),
+                        type_id=poop_type)
+    
+    db.session.add(new_event)
+    db.session.commit()
     
 
     if session.get('user'):
         user_id = session.get('user')
         user = User.query.get(user_id)
         user_events = Event.query.filter_by(user_id=user_id).all()
-        user_events = Event.query.filter_by()
         return render_template("user_account.html", 
                                 user_events=user_events)
     else:
