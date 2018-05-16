@@ -85,18 +85,24 @@ def validate_login():
         return redirect("/home")    
 
 
-@app.route("/user_account", methods=["GET","POST"])
-def display_account():
+@app.route("/user_account", methods=["POST"])
+def submit_data():
     """Display user page"""
 
     poop_type = request.form.get("type")
+    print poop_type
     comment = request.form.get("comment")
     new_event = Event(comment=comment, event_at=datetime.datetime.now(),
-                        type_id=poop_type)
+                        type_id=int(poop_type))
     
     db.session.add(new_event)
     db.session.commit()
+
+    return redirect("/user_account")
     
+
+@app.route("/user_account", methods=["GET"])    
+def display_data():
 
     if session.get('user'):
         user_id = session.get('user')
