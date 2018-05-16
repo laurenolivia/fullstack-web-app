@@ -32,7 +32,7 @@ Welcome, {{ session['fname'] }}!
 
     <div>
         <p>Additional Comments:</p>
-        <textarea name="comments"></textarea>
+        <textarea id="comments" name="comments"></textarea>
     </div>
     
     <input type="submit" name="Submit">
@@ -45,9 +45,13 @@ Welcome, {{ session['fname'] }}!
 
 <div id="display_data">
 
-<p>New div: the bottom half of page where poop data will display
-try to update data without reloading page</p>
+{% for event in user_events %}
+<ul>
+    <li>{{ event }}</li>
+</ul>
 
+{% endfor %}
+ 
 
 </div>
 

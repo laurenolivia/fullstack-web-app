@@ -88,15 +88,21 @@ def validate_login():
 def display_account():
     """Display user page"""
 
+    poop_type = request.form.get("type")
+    comments = request.form.get("comments")
+    
+
     if session.get('user'):
-        return render_template("user_account.html")
+        user_id = session.get('user')
+        user = User.query.get(user_id)
+        user_events = Event.query.filter_by(user_id=user_id).all()
+        user_events = Event.query.filter_by()
+        return render_template("user_account.html", 
+                                user_events=user_events)
     else:
         flash("Not logged in.")
         return redirect("/home")
-
-    poop_type = request.form.get("type")    
-
-
+    
 
 
 @app.route("/logout")

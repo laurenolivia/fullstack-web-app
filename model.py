@@ -73,6 +73,13 @@ class Event(db.Model):
     user_event = db.relationship('User', backref="users") #backref gets all user info
     event_type = db.relationship('Type', backref="types") 
 
+    def __repr__(self):
+
+        return "<event_id={event_id} user_id={user_id} \
+                    type_id={type_id} event_at={event_at} \
+                        comment={comment}>".format(event_id=self.event_id,
+                                user_id=self.user_id, type_id=self.type_id,\
+                                 event_at=self.event_at, comment=self.comment)
 
 
 
