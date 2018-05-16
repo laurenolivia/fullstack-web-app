@@ -85,21 +85,6 @@ def validate_login():
         return redirect("/home")    
 
 
-@app.route("/user_account", methods=["POST"])
-def submit_data():
-    """Display user page"""
-
-    poop_type = request.form.get("type")
-    print poop_type
-    comment = request.form.get("comment")
-    new_event = Event(comment=comment, event_at=datetime.datetime.now(),
-                        type_id=int(poop_type))
-    
-    db.session.add(new_event)
-    db.session.commit()
-
-    return redirect("/user_account")
-    
 
 @app.route("/user_account", methods=["GET"])    
 def display_data():
@@ -114,6 +99,23 @@ def display_data():
         flash("Not logged in.")
         return redirect("/home")
     
+
+
+@app.route("/user_account", methods=["POST"])
+def submit_data():
+    """Display user page"""
+
+    poop_type = request.form.get("type")
+    print poop_type
+    comment = request.form.get("comment")
+    new_event = Event(comment=comment, event_at=datetime.datetime.now(),
+                        type_id=int(poop_type))
+    
+    db.session.add(new_event)
+    db.session.commit()
+
+    return redirect("/user_account")
+
 
 
 @app.route("/logout")
