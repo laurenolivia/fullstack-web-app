@@ -68,7 +68,7 @@ class Event(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     type_id = db.Column(db.Integer, db.ForeignKey('types.type_id'))
     event_at = db.Column(db.DateTime)
-    comment = db.Column(db.String(256), default="None")
+    comment = db.Column(db.String(256), default=None)
 
     user_event = db.relationship('User', backref="users") #backref gets all user info
     event_type = db.relationship('Type', backref="types") 

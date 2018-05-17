@@ -95,14 +95,14 @@ def display_data():
         user = User.query.get(user_id) # <-- why get same num twice?
         user_events = Event.query.filter_by(user_id=user_id).all()
         return render_template("user_account.html", 
-                                user_events=user_events, user_id=user_id)
+                                user_events=user_events)
     else:
         flash("Not logged in.")
         return redirect("/home")
     
 
 
-@app.route("/user_account", methods=["GET","POST"])
+@app.route("/user_account", methods=["POST"])
 def submit_data():
     """User adds new poop event"""
 
