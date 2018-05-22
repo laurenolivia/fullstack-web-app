@@ -19,19 +19,19 @@ class Seed_Data(object):
         self.user_4 = User(fname='Naa', lname='Badger', \
                             username='nbadger', password='nbadger')
 
-        self.type_1 = Type(type_name='Type 1', \
+        self.type_1 = Type(type_id=1, type_name='Type 1', \
                             type_description='Separate hard lumps, like nuts (hard to pass)')
-        self.type_2 = Type(type_name='Type 2', \
+        self.type_2 = Type(type_id=2, type_name='Type 2', \
                             type_description='Sausage-shaped, but lumpy')
-        self.type_3 = Type(type_name='Type 3', \
+        self.type_3 = Type(type_id=3, type_name='Type 3', \
                             type_description='Like a sausage but with cracks on its surface')
-        self.type_4 = Type(type_name='Type 4', \
+        self.type_4 = Type(type_id=4, type_name='Type 4', \
                             type_description='Like a sausage or snake, smooth and soft')
-        self.type_5 = Type(type_name='Type 5', \
+        self.type_5 = Type(type_id=5, type_name='Type 5', \
                             type_description='Soft blobs with clear cut edges (passed easily)')
-        self.type_6 = Type(type_name='Type 6', \
+        self.type_6 = Type(type_id=6, type_name='Type 6', \
                             type_description='Fluffy pieces with ragged edges, a mushy stool')
-        self.type_7 = Type(type_name='Type 7', \
+        self.type_7 = Type(type_id=7, type_name='Type 7', \
                             type_description='Watery, no solid pieces, entirely liquid')
 
         db.session.add_all([self.user_1, self.user_2, self.user_3, self.user_4, \

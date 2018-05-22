@@ -43,7 +43,6 @@ class Type(db.Model):
     __tablename__ = "types"
 
     type_id = db.Column(db.Integer, 
-                        autoincrement=True,
                         primary_key=True)
     type_name = db.Column(db.String(8), nullable=False)
     type_img = db.Column(db.String(64), nullable=True)  # <--- TODO: nullable=False

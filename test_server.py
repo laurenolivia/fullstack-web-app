@@ -9,7 +9,7 @@ class IntegrationTestCase(unittest.Testcase):
         #test_client() makes request to app
         client = server.app.test_client()
         result = client.get('/home')
-        self.assertIn("Sign Me Up!", result.data)
+        self.assertEqual(result.status_code, 200)
 
 
     def test_register_form(self):
@@ -28,7 +28,17 @@ class IntegrationTestCase(unittest.Testcase):
         
         client = server.app.test_client()
         result = client.get("user_account")
-        self.assertIn("Enter Today's Data", result.data)        
+        self.assertIn("Enter Today's Data:", result.data)
+
+
+# class FlaskClientTestCase(unittest.Testcase):
+    
+#     def SetUp(self):
+#         pass
+
+#     def TearDown(self):
+#         pass
+
 
 
 
