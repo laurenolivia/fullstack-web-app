@@ -47,9 +47,9 @@ Welcome, {{ session['fname'] }}!
 
 {% for event in user_events %}
 
-<p> <b>Type Name: </b> {{ event.event_type.type_name }}  
-    <b>Date: </b>{{ event.event_at }} 
-    <b>Comment: </b>{{ event.comment }} </p>
+<p> <i>Type Name: </i> {{ event.event_type.type_name }}  
+    <i>Date: </i>{{ event.event_at }} 
+    <i>Comment: </i>{{ event.comment }} </p>
 
 {% endfor %}
  

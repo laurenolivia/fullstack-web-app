@@ -1,5 +1,8 @@
 import server
 import unittest
+from model import db, connect_to_db, User, Event, Type
+import datetime
+
 
 class IntegrationTests(unittest.Testcase):
 
@@ -40,14 +43,21 @@ class DumpsDatabaseTests(unittest.Testcase):
     
     def SetUp(self):
         """To do before every test"""
+        
         #Get the Flask test client
         self.client = app.test_client()
 
         #Show Flask errors that happen during tests
         app.config['TESTING'] = True
+        app.config['SECRET KEY'] = 'thisisasecret'
 
         #Connect to test db
         connect_to_db(app, "postgresql:///dumps")
+
+        #only allow access to page if user is logged in
+        with self.client as c:
+            with c.session_transaction() as sess:
+                sess['user_id'] = users.user_id
 
 
     def TearDown(self):
@@ -62,6 +72,8 @@ class DumpsDatabaseTests(unittest.Testcase):
 
 
 if __name__ == '__main__':
+    
+    #runs all cases
     unittest.main()        
 
 
