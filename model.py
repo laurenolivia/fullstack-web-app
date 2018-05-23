@@ -34,7 +34,7 @@ class User(db.Model):
         return "<user_id={user_id} first_name={fname} last_name={lname} \
                 username={username} password={password}>".format(
                     user_id=self.user_id, fname=self.fname, lname=self.lname,
-                    username=self.username, password=self.password)
+                    username=self.username, password=self.password) #pragma: no cover
 
 
 class Type(db.Model):
@@ -53,7 +53,7 @@ class Type(db.Model):
         return "<type_id={id} type_name={name} type_img={img} \
                 type_description={description}>".format(id=self.type_id,
                 name=self.type_name, img=self.type_img,
-                description=self.type_description)
+                description=self.type_description)  #pragma: no cover
 
 
 class Event(db.Model):
@@ -78,7 +78,7 @@ class Event(db.Model):
                     type_id={type_id} event_at={event_at} \
                         comment={comment}>".format(event_id=self.event_id,
                                 user_id=self.user_id, type_id=self.type_id,
-                                 event_at=self.event_at, comment=self.comment)
+                                 event_at=self.event_at, comment=self.comment)  #pragma: no cover
 
 
 
@@ -87,11 +87,11 @@ class Event(db.Model):
 def example_data():
     """Create sample data"""
 
-    Barack = User(fname='Barack', lname='Obama', username='bobama', 
-                    password='bobama')
+    Lauren = User(fname='Lauren', lname='Burwell', username='lburwell', 
+                    password='lburwell')
 
     
-    db.session.add(Barack)
+    db.session.add(Lauren)
     db.session.commit()
 
 #<---------------------------------------------------------------------------->
@@ -106,7 +106,7 @@ def connect_to_db(app):
     db.init_app(app)    #make active connection
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  #pragma: no cover
     # if you run this module interactively
     # you can work with the DB directly
 

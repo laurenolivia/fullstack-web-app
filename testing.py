@@ -5,7 +5,30 @@ from model import db, connect_to_db, example_data, User, Event, Type
 import datetime
 
 
-class IntegrationTests(Testcase):
+class FlaskTestRoutes(Testcase):
+
+    def SetUp(self):
+        """To do before every test"""
+
+        self.client = app.test_client()
+
+        #Show Flask errors that happen during tests
+        app.config['TESTING'] = True
+        app.config['SECRET KEY'] = 'thisisasecret'
+
+        #Connect to testdb
+        connect_to_db(app, "postgresql:///testdb")
+
+        db.create_all()
+        example_data()
+
+
+    def TearDown(self):
+        """To do after every test"""
+        
+        db.session.close()
+        db.drop_all()
+        
 
     def test_home(self):
         """Test homepage"""
@@ -19,7 +42,7 @@ class IntegrationTests(Testcase):
     def test_register_form(self):
 
         client = server.app.test_client()
-        result = client.post('/register', data={'first': 'Lauren', 'last': 'B',
+        result = client.post('/register', data={'first': 'Lauren', 'last': 'Burwell',
                                                 'username': 'lburwell',
                                                     'password': 'lburwell'},
                                                         follow_redirects=True)
@@ -40,7 +63,7 @@ class IntegrationTests(Testcase):
         self.assertIn("Enter Today's Data:", result.data)
 
 
-class DumpsDatabaseTests(Testcase):
+class DatabaseTests(Testcase):
     
     def SetUp(self):
         """To do before every test"""
@@ -61,6 +84,7 @@ class DumpsDatabaseTests(Testcase):
         #only allow access to page if user is logged in
         with self.client as c:
             with c.session_transaction() as sess:
+                sess['username'] = 'lburwell'
                 sess['user_id'] = 1
 
 
@@ -74,7 +98,7 @@ class DumpsDatabaseTests(Testcase):
 
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  #pragma: no cover
     
     #runs all cases
     unittest.main()        
