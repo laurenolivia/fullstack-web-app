@@ -66,9 +66,13 @@ Welcome, {{ session['fname'] }}!
 
 <div id="display_data">
 
+<!-- user_events queries Events table -->
+<!-- .all() on user_events returns list of objects -->
 {% for event in user_events %}
 
 <p> <i>Type Name: </i> {{ event.event_type.type_name }}  
+    <!-- event.event_at will access formatting from -->
+    <!-- server.py on /user_account route -->
     <i>Date: </i>{{ event.event_at }} 
     <i>Comment: </i>{{ event.comment }} </p>
 

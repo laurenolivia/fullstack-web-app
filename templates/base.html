@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     {% block head %}
     <title> {% block title %} {% endblock %}Dump</title>
     
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+
     {% endblock %}
+
 </head>
 <body>
+
     {% block body %}
     
     Track Your Poop Health
@@ -23,6 +29,6 @@
 
     {% block content %} ENTER PAGE CONTENT HERE {% endblock %}
         
-
+<script src="http://code.jquery.com/jquery.js"></script>
 </body>
 </html>
