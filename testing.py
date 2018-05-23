@@ -1,13 +1,13 @@
 import server
 import unittest
-from unittest import Testcase
+from unittest import TestCase
 from model import db, connect_to_db, example_data, User, Event, Type
 import datetime
+from server import app
 
+class FlaskTestRoutes(TestCase):
 
-class FlaskTestRoutes(Testcase):
-
-    def SetUp(self):
+    def setUp(self):
         """To do before every test"""
 
         self.client = app.test_client()
@@ -23,7 +23,7 @@ class FlaskTestRoutes(Testcase):
         example_data()
 
 
-    def TearDown(self):
+    def tearDown(self):
         """To do after every test"""
         
         db.session.close()
@@ -34,39 +34,43 @@ class FlaskTestRoutes(Testcase):
         """Test homepage"""
 
         #test_client() makes request to app
-        client = server.app.test_client()
-        result = client.get('/home')
+        # client = server.app.test_client()
+        result = self.client.get('/home')
         self.assertEqual(result.status_code, 200)
 
 
     def test_register_form(self):
 
-        client = server.app.test_client()
-        result = client.post('/register', data={'first': 'Lauren', 'last': 'Burwell',
-                                                'username': 'lburwell',
-                                                    'password': 'lburwell'},
-                                                        follow_redirects=True)
+        # client = server.app.test_client()
+        result = self.client.post('/validate_registration', 
+            data={
+            'First': 'Lauren', 
+            'Last': 'Burwell',
+            'Username': 'lburwell',
+            'Password': 'lburwell'
+            },
+            follow_redirects=True)
         #should assertIn look for what new page renders?
         self.assertIn("Please Register", result.data)
 
     def test_login_form(self):
 
-        client = server.app.test_client()
-        result = client.post('/login', data={'username': 'lburwell', 
+        # client = server.app.test_client()
+        result = self.client.post('/login', data={'username': 'lburwell', 
                                                 'password': 'lburwell'},
                                                     follow_redirects=True)
         self.assertIn("You are logged in.", result.data)
 
     def test_user_account(self):
         
-        client = server.app.test_client()
-        result = client.get("user_account")
-        self.assertIn("Enter Today's Data:", result.data)
+        # client = server.app.test_client()
+        result = self.client.get("/user_account", follow_redirects=True)
+        self.assertIn("Welcome", result.data)
 
 
-class DatabaseTests(Testcase):
+class DatabaseTests(TestCase):
     
-    def SetUp(self):
+    def setUp(self):
         """To do before every test"""
         
         #Get the Flask test client
@@ -89,7 +93,7 @@ class DatabaseTests(Testcase):
                 sess['user_id'] = 1
 
 
-    def TearDown(self):
+    def tearDown(self):
         """To do after every test"""
         
         db.session.close()

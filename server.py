@@ -32,6 +32,7 @@ def register_form():
 @app.route("/validate_registration", methods=["POST"])
 def validate_registration():
     """Validate user and new user to db"""
+    print request.form
 
     first_name = request.form.get("First")
     last_name = request.form.get("Last")
