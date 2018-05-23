@@ -1,10 +1,11 @@
 import server
 import unittest
-from model import db, connect_to_db, User, Event, Type
+from unittest import Testcase
+from model import db, connect_to_db, example_data, User, Event, Type
 import datetime
 
 
-class IntegrationTests(unittest.Testcase):
+class IntegrationTests(Testcase):
 
     def test_home(self):
         """Test homepage"""
@@ -22,7 +23,7 @@ class IntegrationTests(unittest.Testcase):
                                                 'username': 'lburwell',
                                                     'password': 'lburwell'},
                                                         follow_redirects=True)
-        self.assertIn("Plese Register", result.data)
+        self.assertIn("Please Register", result.data)
 
     def test_login_form(self):
 
@@ -39,7 +40,7 @@ class IntegrationTests(unittest.Testcase):
         self.assertIn("Enter Today's Data:", result.data)
 
 
-class DumpsDatabaseTests(unittest.Testcase):
+class DumpsDatabaseTests(Testcase):
     
     def SetUp(self):
         """To do before every test"""
@@ -54,7 +55,8 @@ class DumpsDatabaseTests(unittest.Testcase):
         #Connect to testdb
         connect_to_db(app, "postgresql:///testdb")
 
-        #call function to seed data
+        db.create_all()
+        example_data()
 
         #only allow access to page if user is logged in
         with self.client as c:
@@ -69,7 +71,6 @@ class DumpsDatabaseTests(unittest.Testcase):
         db.drop_all()
 
         
-
 
 
 

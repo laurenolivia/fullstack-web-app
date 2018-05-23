@@ -83,6 +83,18 @@ class Event(db.Model):
 
 
 #<---------------------------------------------------------------------------->
+
+def example_data():
+    """Create sample data"""
+
+    Barack = User(fname='Barack', lname='Obama', username='bobama', 
+                    password='bobama')
+
+    
+    db.session.add(Barack)
+    db.session.commit()
+
+#<---------------------------------------------------------------------------->
     # Helper functions
 
 def connect_to_db(app):
