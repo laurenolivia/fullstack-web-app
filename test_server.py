@@ -51,13 +51,15 @@ class DumpsDatabaseTests(unittest.Testcase):
         app.config['TESTING'] = True
         app.config['SECRET KEY'] = 'thisisasecret'
 
-        #Connect to test db
-        connect_to_db(app, "postgresql:///dumps")
+        #Connect to testdb
+        connect_to_db(app, "postgresql:///testdb")
+
+        #call function to seed data
 
         #only allow access to page if user is logged in
         with self.client as c:
             with c.session_transaction() as sess:
-                sess['user_id'] = users.user_id
+                sess['user_id'] = 1
 
 
     def TearDown(self):

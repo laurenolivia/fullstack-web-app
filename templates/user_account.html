@@ -16,19 +16,40 @@ Welcome, {{ session['fname'] }}!
 </form>
 
 
-<div id="enter_data">
+<div id="submit_data">
 
 <p>Enter Today's Data:</p>
 
 <form action="/user_account" method="POST">
 
-    <input type="radio" name="type" value="1">Type 1
-    <input type="radio" name="type" value="2">Type 2
-    <input type="radio" name="type" value="3">Type 3
-    <input type="radio" name="type" value="4">Type 4
-    <input type="radio" name="type" value="5">Type 5
-    <input type="radio" name="type" value="6">Type 6
-    <input type="radio" name="type" value="7">Type 7
+    <div><input type="radio" name="type" value="1"/>
+            <img src="/static/poopimages/t1.png">
+    </div>
+
+    <div><input type="radio" name="type" value="2"/>
+            <img src="/static/poopimages/t2.png">
+    </div>
+
+    <div><input type="radio" name="type" value="3"/>
+            <img src="/static/poopimages/t3.png">
+    </div>
+
+    <div><input type="radio" name="type" value="4"/>
+            <img src="/static/poopimages/t4.png">
+    </div>
+
+    <div><input type="radio" name="type" value="5"/>
+            <img src="/static/poopimages/t5.png">
+    </div>
+
+    <div><input type="radio" name="type" value="6"/>
+            <img src="/static/poopimages/t6.png">
+    </div>
+
+    <div><input type="radio" name="type" value="7"/>
+            <img src="/static/poopimages/t7.png">
+    </div>
+
 
     <div>
         <p>Additional Comments:</p>
