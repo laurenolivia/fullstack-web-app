@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from model import User, Type, Event, connect_to_db, db 
 import datetime
+import pytz
 
 app = Flask(__name__)
 
@@ -95,6 +96,12 @@ def display_data():
         user_id = session.get('user')  # <-- why get same num twice?
         user = User.query.get(user_id) # <-- why get same num twice?
         user_events = Event.query.filter_by(user_id=user_id).all()
+        
+        #formatting on frontend
+        for i in user_events:
+            i.event_at = i.event_at.strftime('%B %d, %Y')
+
+
         return render_template("user_account.html", 
                                 user_events=user_events)
     else:
@@ -107,11 +114,22 @@ def display_data():
 def submit_data():
     """User adds new poop event"""
 
+    #change naive datetime to be timezone aware
+
+    # .now() not timezone aware
+    dt_pac = datetime.datetime.now()
+
+    # instantiate a timezone var
+    pac_tz = pytz.timezone('US/Pacific')
+
+    # run .localize() to make timezone aware
+    dt_pac = pac_tz.localize(dt_pac).date()
+    
     user_id = session.get("user")
     poop_type = request.form.get("type")
     comment = request.form.get("comment")
     new_event = Event(user_id=user_id, comment=comment, 
-                        event_at=datetime.datetime.now(), 
+                        event_at=dt_pac,   #replaced datetime.date.today()
                             type_id=int(poop_type))
     
     db.session.add(new_event)

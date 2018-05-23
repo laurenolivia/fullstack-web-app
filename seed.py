@@ -1,6 +1,7 @@
 # from sqlalchemy import func
 from model import User, Event, Type, connect_to_db, db
 import datetime
+import pytz
 from server import app
 
 class Seed_Data(object):
