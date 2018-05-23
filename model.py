@@ -97,13 +97,21 @@ def example_data():
 #<---------------------------------------------------------------------------->
     # Helper functions
 
+#passed 2 param, testing.py passes postgresql:///testdb
 def connect_to_db(app, db_uri='postgresql:///dumps'):
     """Connect the databse to our Flask app"""
 
-    app.config['SQLALCHEMY_DATABASE_URI'] =  db_uri #locaction of db
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #autosets to True
-    db.app = app    #instantiates app; connects app to db    
-    db.init_app(app)    #make active connection
+    #locaction of default db
+    app.config['SQLALCHEMY_DATABASE_URI'] =  db_uri     
+    
+    #autosets to True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False    
+    
+    #instantiates app; connects app to db 
+    db.app = app       
+    
+    #make active connection
+    db.init_app(app)    
 
 
 if __name__ == '__main__':  #pragma: no cover

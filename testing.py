@@ -51,13 +51,13 @@ class FlaskTestRoutes(TestCase):
             },
             follow_redirects=True)
         #should assertIn look for what new page renders?
-        self.assertIn("Please Register", result.data)
+        self.assertIn("An account with this username already exists", result.data)
 
     def test_login_form(self):
 
         # client = server.app.test_client()
-        result = self.client.post('/login', data={'username': 'lburwell', 
-                                                'password': 'lburwell'},
+        result = self.client.post('/login', data={'Username': 'lburwell', 
+                                                'Password': 'lburwell'},
                                                     follow_redirects=True)
         self.assertIn("You are logged in.", result.data)
 
@@ -65,11 +65,12 @@ class FlaskTestRoutes(TestCase):
         
         # client = server.app.test_client()
         result = self.client.get("/user_account", follow_redirects=True)
-        self.assertIn("Welcome", result.data)
+        self.assertIn("Not logged in", result.data)
 
 
 class DatabaseTests(TestCase):
     
+    #special method; requires camelCase
     def setUp(self):
         """To do before every test"""
         
@@ -93,6 +94,7 @@ class DatabaseTests(TestCase):
                 sess['user_id'] = 1
 
 
+    #special method; requires camelCase
     def tearDown(self):
         """To do after every test"""
         
