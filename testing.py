@@ -46,6 +46,7 @@ class FlaskTestRoutes(Testcase):
                                                 'username': 'lburwell',
                                                     'password': 'lburwell'},
                                                         follow_redirects=True)
+        #should assertIn look for what new page renders?
         self.assertIn("Please Register", result.data)
 
     def test_login_form(self):
@@ -54,7 +55,7 @@ class FlaskTestRoutes(Testcase):
         result = client.post('/login', data={'username': 'lburwell', 
                                                 'password': 'lburwell'},
                                                     follow_redirects=True)
-        self.assertIn("LOGIN HERE", result.data)
+        self.assertIn("You are logged in.", result.data)
 
     def test_user_account(self):
         

@@ -21,25 +21,25 @@ class Seed_Data(object):
 
         self.type_1 = Type(type_id=1, type_name='Type 1', \
                             type_description='Indicates constipation',
-                                type_img='/static/poopimages/t1.png')
+                                type_img='/static/poopimages/t1.jpg')
         self.type_2 = Type(type_id=2, type_name='Type 2', \
                             type_description='Indicates constipation',
-                                type_img='/static/poopimages/t2.png')
+                                type_img='/static/poopimages/t2.jpg')
         self.type_3 = Type(type_id=3, type_name='Type 3', \
                             type_description='Considered normal or ideal',
-                                type_img='/static/poopimages/t3.png')
+                                type_img='/static/poopimages/t3.jpg')
         self.type_4 = Type(type_id=4, type_name='Type 4', \
                             type_description='Considered normal or ideal',
-                                type_img='/static/poopimages/t4.png')
+                                type_img='/static/poopimages/t4.jpg')
         self.type_5 = Type(type_id=5, type_name='Type 5', \
                             type_description='Indicates diarrhea',
-                                type_img='/static/poopimages/t5.png')
+                                type_img='/static/poopimages/t5.jpg')
         self.type_6 = Type(type_id=6, type_name='Type 6', \
                             type_description='Indicates diarrhea',
-                                type_img='/static/poopimages/t6.png')
+                                type_img='/static/poopimages/t6.jpg')
         self.type_7 = Type(type_id=7, type_name='Type 7', \
                             type_description='Indicates diarrhea',
-                                type_img='/static/poopimages/t7.png')
+                                type_img='/static/poopimages/t7.jpg')
 
         db.session.add_all([self.user_1, self.user_2, self.user_3, self.user_4, \
                         self.type_1, self.type_2, self.type_3, self.type_4, \
