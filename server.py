@@ -95,9 +95,14 @@ def display_data():
     if session.get('user'):
         user_id = session.get('user')  # <-- why get same num twice?
         user = User.query.get(user_id) # <-- why get same num twice?
+        
+        # .all() returns list of objects
         user_events = Event.query.filter_by(user_id=user_id).all()
         
         #formatting on frontend
+        #loop through list of objects and
+        #access event_at on each object and
+        #format datetime object (event_at)
         for i in user_events:
             i.event_at = i.event_at.strftime('%B %d, %Y')
 
@@ -149,7 +154,16 @@ def logout():
         return redirect("/home")
     else:
         flash("You are logged out.")
-        return redirect("/home")                    
+        return redirect("/home")
+
+@app.route("/chart")
+def chart():
+    
+    legend = "Poop Data"
+    labels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    values = ['Type 1', 'Type 2', 'Type 3', 'Type 4', 'Type 5', 'Type 6', 'Type 7']
+
+    return render_template("chart.html", legend=legend, labels=labels, values=values)                             
 
 
 
