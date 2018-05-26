@@ -22,33 +22,47 @@ Welcome, {{ session['fname'] }}!
 
 <form action="/user_account" method="POST">
 
-   <input type="radio" name="type" value="1">
-    <img src="/static/poopimages/t1.jpg"> <br>
-    
+  <div class="poop_img" id="t1">
+   <h1>Type 1</h1>
+   <input style="display: none" type="radio" name="type" value="1">
+    <img style="display: none" src="/static/poopimages/t1.jpg">
+  </div>  
 
-   <input type="radio" name="type" value="2">
-    <img src="/static/poopimages/t2.jpg"> <br>
-    
+  <div class="poop_img" id="t2">
+    <h1>Type 2</h1>
+   <input style="display: none" type="radio" name="type" value="2">
+    <img style="display: none" src="/static/poopimages/t2.jpg">
+  </div>  
 
-   <input type="radio" name="type" value="3">
-    <img src="/static/poopimages/t3.jpg"> <br>
-    
+  <div class="poop_img" id="t3">
+    <h1>Type 3</h1>
+   <input style="display: none" type="radio" name="type" value="3">
+    <img style="display: none" src="/static/poopimages/t3.jpg">
+  </div>  
 
-   <input type="radio" name="type" value="4">
-    <img src="/static/poopimages/t4.jpg"> <br>
-    
+  <div class="poop_img" id="t4">
+    <h1>Type 4</h1>
+   <input style="display: none" type="radio" name="type" value="4">
+    <img style="display: none" src="/static/poopimages/t4.jpg">
+  </div>  
 
-   <input type="radio" name="type" value="5">
-    <img src="/static/poopimages/t5.jpg"> <br>
-    
+  <div class="poop_img" id="t5">
+    <h1>Type 5</h1>
+   <input style="display: none" type="radio" name="type" value="5">
+    <img style="display: none" src="/static/poopimages/t5.jpg">
+  </div>  
 
-   <input type="radio" name="type" value="6">
-    <img src="/static/poopimages/t6.jpg"> <br>
-    
+  <div class="poop_img" id="t6">
+    <h1>Type 6</h1>
+   <input style="display: none" type="radio" name="type" value="6">
+    <img style="display: none" src="/static/poopimages/t6.jpg">
+  </div>  
 
-   <input type="radio" name="type" value="7">
-    <img src="/static/poopimages/t7.jpg"> <br>
-    
+  <div class="poop_img" id="t7">
+    <h1>Type 7</h1>
+   <input style="display: none" type="radio" name="type" value="7">
+    <img style="display: none" src="/static/poopimages/t7.jpg">
+  </div>  
 
 
     <div>
@@ -81,6 +95,6 @@ Welcome, {{ session['fname'] }}!
 
 </div>
 
-
+<script type="text/javascript" src="/static/user_account.js"></script>
 
 {% endblock %}

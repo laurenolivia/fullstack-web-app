@@ -105,6 +105,7 @@ def display_data():
         #format datetime object (event_at)
         for i in user_events:
             i.event_at = i.event_at.strftime('%B %d, %Y')
+            print i.event_at
 
 
         return render_template("user_account.html", 
@@ -140,7 +141,19 @@ def submit_data():
     db.session.add(new_event)
     db.session.commit()
 
+    #make request to .json route
+    #return jsonify
+    #return needs to be in the form of a dictionary
+
     return redirect("/user_account")
+
+
+app.route("/data.json")
+def user_data():
+    """Get data from"""
+    
+
+    
 
 
 
@@ -148,6 +161,8 @@ def submit_data():
 def logout():
     """Log out user, remove from session"""
 
+    #if a user is stored in the session
+    #del the
     if session.get('user'):
         del session['user']
         flash("You have been logged out. Have a wonderful day!")
@@ -158,12 +173,10 @@ def logout():
 
 @app.route("/chart")
 def chart():
+    """Display poop data"""
     
-    legend = "Poop Data"
-    labels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    values = ['Type 1', 'Type 2', 'Type 3', 'Type 4', 'Type 5', 'Type 6', 'Type 7']
 
-    return render_template("chart.html", legend=legend, labels=labels, values=values)                             
+    return render_template("chart.html")                             
 
 
 

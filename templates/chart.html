@@ -2,29 +2,33 @@
 <html>
 <head>
     <title>Chart.js</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js">  //remote link to chart.js file
 </script>
 
 </head>
 <body>
 
 <h1>Chart</h1>
-<!-- bar chart canvas element -->
+<!-- chart canvas element -->
+
+<div class='container'>
 <canvas id="myChart" width="600" height="400"></canvas>
 <p id="caption">This chart is displaying your poop data.</p>
-
-
-
-
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 
-// do no resize chart canvas (keep at 600x400)
-Chart.defaults.global.responsive = false;
+// do not resize chart canvas (keep at 600x400)
+// Chart.defaults.global.responsive = false;
+// make ajax call 
 
-let ctx = $('#myChart');
+$.get('/chart_data', function(data){
+
+    
+})
+let ctx = document.getElementById('myChart').getContext('2d');
 
 let myChart = new Chart(ctx, {
     type: 'scatter',
@@ -44,6 +48,8 @@ let myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive: true;
+        hoverMode: 'single',  //should always use single for scatter chart
         scales: {
             xAxes: [{
                 type: 'linear',
