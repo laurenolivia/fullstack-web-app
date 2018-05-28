@@ -1,5 +1,6 @@
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, redirect, request, session, flash
+from flask import (Flask, render_template, 
+                    redirect, request, session, flash, jsonify)
 from flask_debugtoolbar import DebugToolbarExtension
 from model import User, Type, Event, connect_to_db, db 
 import datetime
@@ -148,12 +149,29 @@ def submit_data():
     return redirect("/user_account")
 
 
-app.route("/data.json")
-def user_data():
+app.route("/data.json", methods=["GET","POST"])
+def get_user_data():
     """Get data from"""
-    
+
+    # Take in an ID
+    # Look up the details in a database,
+    # and return JSON of that.
+
+    if session.get('user'):
+        user_id = session.get('user')  # <-- why get same num twice?
+        user = User.query.get(user_id) # <-- why get same num twice?
+        
+        # .all() returns list of objects
+        user_events = Event.query.filter_by(user_id=user_id).all()
+
+
+        user_data = {
+            'type_name': [user_events.event_type.type_name],
+            'event_at': [user_events.event_at]
+        }
 
     
+    return jsonify(user_data)
 
 
 
