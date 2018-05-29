@@ -20,6 +20,10 @@ Welcome, {{ session['fname'] }}!
 
 <p>Enter Today's Data:</p>
 
+<!-- this form submits data to db -->
+<!-- server.py will get data from this form -->
+<!-- and create new instance of event on Event table -->
+
 <form action="/user_account" method="POST">
 
   <div class="poop_img" id="t1">
@@ -70,7 +74,7 @@ Welcome, {{ session['fname'] }}!
         <textarea id="comment" name="comment"></textarea>
     </div>
     
-    <input type="submit" name="Submit">
+    <input id="submit_form" type="submit" name="Submit">
 
 </form>
 

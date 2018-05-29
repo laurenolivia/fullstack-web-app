@@ -1,3 +1,4 @@
+"use strict";
 
 // get all poop images by class name
 let poopImages = document.querySelectorAll(".poop_img");
@@ -22,3 +23,10 @@ for (let img of poopImages) {
         this.children[2].style.display = "none";
     });    
 }
+
+
+
+
+$.get("#submit_form").on("submit", )
+
+

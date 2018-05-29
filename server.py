@@ -149,7 +149,7 @@ def submit_data():
     return redirect("/user_account")
 
 
-app.route("/data.json", methods=["GET","POST"])
+app.route("/data.json")
 def get_user_data():
     """Get data from"""
 
@@ -164,15 +164,18 @@ def get_user_data():
         # .all() returns list of objects
         user_events = Event.query.filter_by(user_id=user_id).all()
 
+        for i in user_events:
+            user_event_at.append(i.event_at)
 
-        user_data = {
-            'type_name': [user_events.event_type.type_name],
-            'event_at': [user_events.event_at]
-        }
+        for i in user_events:
+            user_type_id.append(i.user_type_id)
 
-    
-    return jsonify(user_data)
 
+        user_event_at = []
+        user_type_id = []
+
+        return jsonify(user_event_at, user_type_id)
+        
 
 
 @app.route("/logout")
