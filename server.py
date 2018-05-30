@@ -160,21 +160,26 @@ def get_user_data():
     if session.get('user'):
         user_id = session.get('user')  # <-- why get same num twice?
         user = User.query.get(user_id) # <-- why get same num twice?
-        
+    
+
+
+    user_event_at = []
+    user_type_id = []    
+
         # .all() returns list of objects
-        user_events = Event.query.filter_by(user_id=user_id).all()
+    user_events = Event.query.filter_by(user_id=user_id).all()
 
-        for i in user_events:
-            user_event_at.append(i.event_at)
+    
+    dict = {}
 
-        for i in user_events:
-            user_type_id.append(i.user_type_id)
+    for i in user_events:
+        dict[i.event_type.type_name] = []
 
+    for i in user_events:
+        dict[i.event_type.type_name].append(i.event_at)
+    
 
-        user_event_at = []
-        user_type_id = []
-
-        return jsonify(user_event_at, user_type_id)
+    return jsonify(user_event_at, user_type_id)
         
 
 

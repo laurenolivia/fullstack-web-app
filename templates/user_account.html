@@ -24,7 +24,7 @@ Welcome, {{ session['fname'] }}!
 <!-- server.py will get data from this form -->
 <!-- and create new instance of event on Event table -->
 
-<form action="/user_account" method="POST">
+<form id="submit_form" action="/user_account" method="POST">
 
   <div class="poop_img" id="t1">
    <h1>Type 1</h1>
@@ -74,7 +74,7 @@ Welcome, {{ session['fname'] }}!
         <textarea id="comment" name="comment"></textarea>
     </div>
     
-    <input id="submit_form" type="submit" name="Submit">
+    <input type="submit" name="Submit">
 
 </form>
 
@@ -97,7 +97,67 @@ Welcome, {{ session['fname'] }}!
 {% endfor %}
  
 
+</div><div class='container'>
+<canvas id="myChart" width="600" height="400"></canvas>
+<p id="caption">This chart is displaying your poop data.</p>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+// do not resize chart canvas (keep at 600x400)
+// Chart.defaults.global.responsive = false;
+// make ajax call 
+
+let ctx = document.getElementById('myChart').getContext('2d');
+
+
+function displayChartResults(result){
+    let myChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Scatter Dataset',
+            data: [{
+                x: //{{ user_event_at }}
+                y: //{{ user_type_id }}
+            },  
+            }]
+        }]
+    },
+    options: {
+        responsive: true;
+        hoverMode: 'single',  //should always use single for scatter chart
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom'
+            }]
+        }
+    }
+});
+
+    
+}
+
+
+function getUserData(evt){
+    evt.preventDefault();
+
+    let formInputs = {}  //grab from database instead
+
+    // make post/ajax request, sending new poop entry to /new-entry
+    // at callback function, make get/ajax request to get data.json
+    // then at that callback from ajax, start parsin for graph/chart
+
+    $.get("/data.json", formInputs, displayChartResults);
+}
+
+// event listener on form instead of button
+
+$("#submit_form").on("submit", getUserData)
+</script>
 
 <script type="text/javascript" src="/static/user_account.js"></script>
 

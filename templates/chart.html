@@ -24,25 +24,19 @@
 // Chart.defaults.global.responsive = false;
 // make ajax call 
 
-$.get('/data', function(data){})
-
-
 let ctx = document.getElementById('myChart').getContext('2d');
 
-let myChart = new Chart(ctx, {
+
+function displayChartResults(result){
+    let myChart = new Chart(ctx, {
     type: 'scatter',
     data: {
         datasets: [{
             label: 'Scatter Dataset',
             data: [{
-                x: {{  }}
-                y: 0
-            }, {
-                x: 0,
-                y: 10
-            }, {
-                x: 10,
-                y: 5
+                x: //{{ user_event_at }}
+                y: //{{ user_type_id }}
+            },  
             }]
         }]
     },
@@ -57,6 +51,22 @@ let myChart = new Chart(ctx, {
         }
     }
 });
+
+    
+}
+
+
+function getUserData(evt){
+    evt.preventDefault();
+
+    let formInputs = {}  //grab from database instead
+
+
+    $.get("/data.json", formInputs, displayChartResults);
+}
+
+$("#submit_form").on("submit", getUserData)
+
 
 
 </script>

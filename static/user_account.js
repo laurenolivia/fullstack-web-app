@@ -25,8 +25,3 @@ for (let img of poopImages) {
 }
 
 
-
-
-$.get("#submit_form").on("submit", )
-
-
