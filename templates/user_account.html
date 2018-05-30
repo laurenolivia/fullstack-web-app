@@ -142,21 +142,40 @@ function displayChartResults(result){
 }
 
 
+
+
 function getUserData(evt){
     evt.preventDefault();
 
-    let formInputs = {}  //grab from database instead
+    let formInputs = {
+      "type": $("#submit_form").val()
+
+    }  //grab from database instead
 
     // make post/ajax request, sending new poop entry to /new-entry
     // at callback function, make get/ajax request to get data.json
-    // then at that callback from ajax, start parsin for graph/chart
+    // then at that callback from ajax, start parsing for graph/chart
 
     $.get("/data.json", formInputs, displayChartResults);
+}
+
+function submitOrder(evt) {
+    evt.preventDefault();
+
+    var formInputs = {
+        "type": $("#type-field").val(),
+        "amount": $("#amount-field").val(),
+    };
+
+    $.post("/new-order", 
+         formInputs,
+         showOrderResults);
 }
 
 // event listener on form instead of button
 
 $("#submit_form").on("submit", getUserData)
+
 </script>
 
 <script type="text/javascript" src="/static/user_account.js"></script>
