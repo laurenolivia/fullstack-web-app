@@ -114,70 +114,90 @@ let ctx = document.getElementById('myChart').getContext('2d');
 
 
 function displayChartResults(result){
-    let myChart = new Chart(ctx, {
-    type: 'scatter',
-    data: {
-        datasets: [{
-            label: 'Scatter Dataset',
-            data: [{
-                x: //{{ user_event_at }}
-                y: //{{ user_type_id }}
-            },  
-            }]
-        }]
-    },
-    options: {
-        responsive: true;
-        hoverMode: 'single',  //should always use single for scatter chart
-        scales: {
-            xAxes: [{
-                type: 'linear',
-                position: 'bottom'
-            }]
-        }
-    }
+//     let myChart = new Chart(ctx, {
+//     type: 'scatter',
+//     data: {
+//         datasets: [{
+//             label: 'Scatter Dataset',
+//             data: [{
+//                 x: 0,
+//                 y: 10
+//             },  
+//             ]
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         hoverMode: 'single',  //should always use single for scatter chart
+//         scales: {
+//             xAxes: [{
+//                 type: 'linear',
+//                 position: 'bottom'
+//             }]
+//         }
+//     }
+// });
+  var myBarChart = new Chart(ctx, {
+      type: 'bar',
+      data: [1,2,3,6]
+    // options: options
 });
-
     
 }
 
 
 
 
+
+
+
 function getUserData(evt){
-    evt.preventDefault();
+    // evt.preventDefault();
+    console.log(arguments);
 
-    let formInputs = {
-      "type": $("#submit_form").val()
+    // var formInputs = {
+    //   type: 29,
+    //   comment: "hello",
+    // }
 
-    }  //grab from database instead
+    // localhost:5000/data?type=29&comment=hello
+    
+    //grab from database instead
 
     // make post/ajax request, sending new poop entry to /new-entry
     // at callback function, make get/ajax request to get data.json
     // then at that callback from ajax, start parsing for graph/chart
 
-    $.get("/data.json", formInputs, displayChartResults);
+    $.get("/data", function(){
+
+      console.log("Hello");
+    });
 }
 
-function submitOrder(evt) {
+function submitData(evt) {
     evt.preventDefault();
 
     var formInputs = {
-        "type": $("#type-field").val(),
-        "amount": $("#amount-field").val(),
+        // "type": $("#submit_form").val(),
+        'type': $('input[name=type]:checked').val(),
+        'comment': $("#comment").val()
+        
     };
 
-    $.post("/new-order", 
+    console.log(formInputs);
+
+    $.post("/user_account", 
          formInputs,
-         showOrderResults);
+         getUserData);
 }
 
 // event listener on form instead of button
 
-$("#submit_form").on("submit", getUserData)
+$("#submit_form").on("submit", submitData)
 
 </script>
 
 <script type="text/javascript" src="/static/user_account.js"></script>
 
 {% endblock %}
+

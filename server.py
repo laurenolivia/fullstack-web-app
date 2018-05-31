@@ -135,6 +135,9 @@ def submit_data():
     user_id = session.get("user")
     poop_type = request.form.get("type")
     comment = request.form.get("comment")
+    print 'user_id', user_id
+    print 'poop_type', poop_type
+    print 'comment', comment
     new_event = Event(user_id=user_id, comment=comment, 
                         event_at=dt_pac,   #replaced datetime.date.today()
                             type_id=int(poop_type))
@@ -149,7 +152,7 @@ def submit_data():
     return redirect("/user_account")
 
 
-app.route("/data.json")
+@app.route("/data")
 def get_user_data():
     """Get data from"""
 
@@ -170,16 +173,21 @@ def get_user_data():
     user_events = Event.query.filter_by(user_id=user_id).all()
 
     
-    dict = {}
+    dicti = {}
 
     for i in user_events:
-        dict[i.event_type.type_name] = []
+        print i.event_type.type_name
+        dicti[i.event_type.type_name] = []
 
     for i in user_events:
-        dict[i.event_type.type_name].append(i.event_at)
+        i.event_at = i.event_at.strftime('%B %d, %Y')
+        dicti[i.event_type.type_name].append(i.event_at)
     
+    return jsonify(dicti)
+    # print jsonify(user_event_at)
+    # print jsonify(user_type_id)
+    # return jsonify(user_events[0])
 
-    return jsonify(user_event_at, user_type_id)
         
 
 
