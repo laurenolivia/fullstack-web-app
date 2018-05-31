@@ -18,7 +18,7 @@ class FlaskTestRoutes(TestCase):
 
         #Connect to testdb
         connect_to_db(app, "postgresql:///testdb")
-
+        
         db.create_all()
         example_data()
 

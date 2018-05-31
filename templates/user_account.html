@@ -137,7 +137,7 @@ function displayChartResults(result){
 //         }
 //     }
 // });
-  var myBarChart = new Chart(ctx, {
+  let myBarChart = new Chart(ctx, {
       type: 'bar',
       data: [1,2,3,6]
     // options: options
@@ -155,7 +155,7 @@ function getUserData(evt){
     // evt.preventDefault();
     console.log(arguments);
 
-    // var formInputs = {
+    // let formInputs = {
     //   type: 29,
     //   comment: "hello",
     // }
@@ -164,35 +164,42 @@ function getUserData(evt){
     
     //grab from database instead
 
-    // make post/ajax request, sending new poop entry to /new-entry
-    // at callback function, make get/ajax request to get data.json
+    // make post/ajax request, sending new poop entry to /route
+    // at callback function, make get/ajax request to get data
     // then at that callback from ajax, start parsing for graph/chart
 
     $.get("/data", function(){
 
-      console.log("Hello");
+  
     });
 }
 
 function submitData(evt) {
+    //stop default reload from happening
     evt.preventDefault();
 
-    var formInputs = {
+    //store form data in dict
+    //'input[name=type]:checked' matches selected
+    //element in radio form and get value
+    let formInputs = {
         // "type": $("#submit_form").val(),
         'type': $('input[name=type]:checked').val(),
         'comment': $("#comment").val()
         
     };
-
+    //verify value
     console.log(formInputs);
 
+    //send data to route which will create new event
+    //data comes from formInputs
+    //callback function
     $.post("/user_account", 
          formInputs,
          getUserData);
 }
 
 // event listener on form instead of button
-
+// get radio data and pass to callback function
 $("#submit_form").on("submit", submitData)
 
 </script>
