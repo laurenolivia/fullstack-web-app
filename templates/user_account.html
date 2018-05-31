@@ -110,8 +110,10 @@ Welcome, {{ session['fname'] }}!
 // Chart.defaults.global.responsive = false;
 // make ajax call 
 
-let ctx = document.getElementById('myChart').getContext('2d');
+//get scatter ID
+// let ctx = document.getElementById('myChart').getContext('2d');
 
+let ctx = document.getElementById('myBarChart').getContext('2d');
 
 function displayChartResults(result){
 //     let myChart = new Chart(ctx, {
@@ -137,12 +139,7 @@ function displayChartResults(result){
 //         }
 //     }
 // });
-  let myBarChart = new Chart(ctx, {
-      type: 'bar',
-      data: [1,2,3,6]
-    // options: options
-});
-    
+  
 }
 
 
@@ -169,7 +166,12 @@ function getUserData(evt){
     // then at that callback from ajax, start parsing for graph/chart
 
     $.get("/data", function(){
-
+      let myBarChart = new Chart(ctx, {
+      type: 'bar',
+      data: [1,2,3,6]
+    // options: options
+});
+    
   
     });
 }

@@ -169,23 +169,25 @@ def get_user_data():
     user_event_at = []
     user_type_id = []    
 
-        # .all() returns list of objects
+    # user_events stores a list of objects
     user_events = Event.query.filter_by(user_id=user_id).all()
 
     
     user_data = {}
 
     for i in user_events:
-        print i.event_type.type_name
+        #print i.event_type.type_name
+        #store every type_name as key with empty list
         user_data[i.event_type.type_name] = []
 
     for i in user_events:
+    	#convert Datetime obj to string
         i.event_at = i.event_at.strftime('%B %d, %Y')
+        #append event_at to key(type_name)
         user_data[i.event_type.type_name].append(i.event_at)
     
+    
     return jsonify(user_data)
-    # print jsonify(user_event_at)
-    # print jsonify(user_type_id)
     
 
 
@@ -194,7 +196,6 @@ def logout():
     """Log out user, remove from session"""
 
     #if a user is stored in the session
-    #del the
     if session.get('user'):
         del session['user']
         flash("You have been logged out. Have a wonderful day!")
