@@ -142,8 +142,10 @@ function getUserData(response){
         datasets: [{
             label: 'Scatter Dataset',
             data: [{
-                x: //on server side format data as x/y coordinates
-                y: //pass data here remove chart from callback
+                //on server side format data as x/y coordinates
+                x: chart_data["x"], 
+                //pass data here remove chart from callback
+                y: chart_data["y"]
             },  
             ]
         }]

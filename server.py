@@ -180,20 +180,29 @@ def get_user_data():
         #store every type_name as key with empty list
         user_data[i.event_type.type_name] = []
 
+        
+
+
     for i in user_events:
     	#convert Datetime obj to string
         i.event_at = i.event_at.strftime('%B %d, %Y')
         #append event_at to key(type_name)
         user_data[i.event_type.type_name].append(i.event_at)
-
+        times = user_data[i.event_type.type_name].append(i.event_at)
+        
         #make list of dictionaries
         #x: dates
         #y: types
 
-        #pass object back to function(data) 
+        #pass object back to function(data)
+
+    chart_data = [{
+    "x": [times],
+    "y": ["Type 1", "Type 2", "Type 3", "Type 4", "Type 5", "Type 6", "Type 7" ]
+    }] 
     
     #user_data is a dictionary; type=key val=time
-    return jsonify(user_data)
+    return jsonify(user_data, chart_data)
     
 
 
