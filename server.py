@@ -149,8 +149,8 @@ def submit_data():
     #return jsonify
     #return needs to be in the form of a dictionary
 
-    return redirect("/user_account")
-
+    # return redirect("/user_account")
+    return "the data"
 
 @app.route("/data")
 def get_user_data():
@@ -185,8 +185,14 @@ def get_user_data():
         i.event_at = i.event_at.strftime('%B %d, %Y')
         #append event_at to key(type_name)
         user_data[i.event_type.type_name].append(i.event_at)
+
+        #make list of dictionaries
+        #x: dates
+        #y: types
+
+        #pass object back to function(data) 
     
-    
+    #user_data is a dictionary; type=key val=time
     return jsonify(user_data)
     
 
@@ -224,5 +230,3 @@ if __name__ == "__main__":
     DebugToolbarExtension(app)
     
     app.run(port=5000, host="0.0.0.0")
-
-

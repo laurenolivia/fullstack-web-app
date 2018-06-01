@@ -99,7 +99,7 @@ Welcome, {{ session['fname'] }}!
 
 </div><div class='container'>
 <canvas id="myChart" width="600" height="400"></canvas>
-<p id="caption">This chart is displaying your poop data.</p>
+<p id="caption">This chart is displaying your poop data. Poop away!</p>
 </div>
 
 
@@ -113,44 +113,13 @@ Welcome, {{ session['fname'] }}!
 //get scatter ID
 // let ctx = document.getElementById('myChart').getContext('2d');
 
-let ctx = document.getElementById('myBarChart').getContext('2d');
-
-function displayChartResults(result){
-//     let myChart = new Chart(ctx, {
-//     type: 'scatter',
-//     data: {
-//         datasets: [{
-//             label: 'Scatter Dataset',
-//             data: [{
-//                 x: 0,
-//                 y: 10
-//             },  
-//             ]
-//         }]
-//     },
-//     options: {
-//         responsive: true,
-//         hoverMode: 'single',  //should always use single for scatter chart
-//         scales: {
-//             xAxes: [{
-//                 type: 'linear',
-//                 position: 'bottom'
-//             }]
-//         }
-//     }
-// });
-  
-}
+let ctx = document.getElementById('myChart').getContext('2d');
 
 
 
-
-
-
-
-function getUserData(evt){
+function getUserData(response){
     // evt.preventDefault();
-    console.log(arguments);
+    console.log(response);
 
     // let formInputs = {
     //   type: 29,
@@ -165,13 +134,32 @@ function getUserData(evt){
     // at callback function, make get/ajax request to get data
     // then at that callback from ajax, start parsing for graph/chart
 
-    $.get("/data", function(){
-      let myBarChart = new Chart(ctx, {
-      type: 'bar',
-      data: [1,2,3,6]
-    // options: options
+    $.get("/data", function(data){
+          console.log("inside chart function")
+          let myChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Scatter Dataset',
+            data: [{
+                x: //on server side format data as x/y coordinates
+                y: //pass data here remove chart from callback
+            },  
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        hoverMode: 'single',  //should always use single for scatter chart
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom'
+            }]
+        }
+    }
 });
-    
+  
   
     });
 }
