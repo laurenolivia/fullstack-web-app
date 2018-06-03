@@ -178,6 +178,7 @@ def get_user_data():
     for i in user_data:
         #this will return list of dict where key = "type" val = "Type 1"
         d["type"] = i
+        d["date"] = user_data[i]
         dlist.append(d)
 
     print dlist    
@@ -201,7 +202,7 @@ def get_user_data():
     
         
         
-    return jsonify(user_data)
+    return jsonify(dlist)
     
 
 
