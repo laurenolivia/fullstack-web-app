@@ -11,61 +11,6 @@
 <h1>Chart</h1>
 <!-- chart canvas element -->
 
-<div class='container'>
-<canvas id="myChart" width="600" height="400"></canvas>
-<p id="caption">This chart is displaying your poop data.</p>
-</div>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-
-// do not resize chart canvas (keep at 600x400)
-// Chart.defaults.global.responsive = false;
-// make ajax call 
-
-let ctx = document.getElementById('myChart').getContext('2d');
-
-
-function displayChartResults(result){
-    let myChart = new Chart(ctx, {
-    type: 'scatter',
-    data: {
-        datasets: [{
-            label: 'Scatter Dataset',
-            data: [{
-                x: //{{ user_event_at }}
-                y: //{{ user_type_id }}
-            },  
-            }]
-        }]
-    },
-    options: {
-        responsive: true;
-        hoverMode: 'single',  //should always use single for scatter chart
-        scales: {
-            xAxes: [{
-                type: 'linear',
-                position: 'bottom'
-            }]
-        }
-    }
-});
-
-    
-}
-
-
-function getUserData(evt){
-    evt.preventDefault();
-
-    let formInputs = {}  //grab from database instead
-
-
-    $.get("/data.json", formInputs, displayChartResults);
-}
-
-$("#submit_form").on("submit", getUserData)
 
 
 

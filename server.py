@@ -182,13 +182,21 @@ def get_user_data():
 
         
 
+    times = []
 
     for i in user_events:
     	#convert Datetime obj to string
         i.event_at = i.event_at.strftime('%B %d, %Y')
         #append event_at to key(type_name)
         user_data[i.event_type.type_name].append(i.event_at)
-        times = user_data[i.event_type.type_name].append(i.event_at)
+         
+
+    print ">>> Inside /data route <<<"
+    print ">>> Completed for loops <<<"
+    print ">>> Printing user_data NEXT <<<"
+    print user_data
+    print type(user_data)
+        
         
         #make list of dictionaries
         #x: dates
@@ -200,9 +208,16 @@ def get_user_data():
     "x": [times],
     "y": ["Type 1", "Type 2", "Type 3", "Type 4", "Type 5", "Type 6", "Type 7" ]
     }] 
+
+    print ">>> AFTER INSTANTIATING chart_data <<<"
+    print type(chart_data["x"])
+    print chart_data["x"]
+    print type(chart_data["y"])
+    print chart_data["y"]
+    print ">>> Exiting /data route <<<"
     
     #user_data is a dictionary; type=key val=time
-    return jsonify(user_data, chart_data)
+    return jsonify({x: days, y: types})
     
 
 

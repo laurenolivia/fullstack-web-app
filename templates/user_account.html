@@ -135,7 +135,9 @@ function getUserData(response){
     // then at that callback from ajax, start parsing for graph/chart
 
     $.get("/data", function(data){
-          console.log("inside chart function")
+          console.log(">>> inside $.get(/data) <<<")
+          console.log(">>> front end side <<<" + data);
+          console.log(chart_data);
           let myChart = new Chart(ctx, {
     type: 'scatter',
     data: {
@@ -143,9 +145,9 @@ function getUserData(response){
             label: 'Scatter Dataset',
             data: [{
                 //on server side format data as x/y coordinates
-                x: chart_data["x"], 
+                x: chart_data.x, 
                 //pass data here remove chart from callback
-                y: chart_data["y"]
+                y: chart_data.y
             },  
             ]
         }]
