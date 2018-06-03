@@ -97,7 +97,9 @@ Welcome, {{ session['fname'] }}!
 {% endfor %}
  
 
-</div><div class='container'>
+</div>
+
+<div style="width:75%" class='container'>
 <canvas id="myChart" width="600" height="400"></canvas>
 <p id="caption">This chart is displaying your poop data. Poop away!</p>
 </div>
@@ -113,41 +115,80 @@ Welcome, {{ session['fname'] }}!
 //get scatter ID
 // let ctx = document.getElementById('myChart').getContext('2d');
 
+//ctx == context
+
+// let scatterChartData = {
+//       datasets: [{
+//         label: 'My First dataset',
+//         borderColor: window.chartColors.red,
+//         backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
+//         data: [{
+//           x: -5,
+//           y: 10
+//         }, 
+
 let ctx = document.getElementById('myChart').getContext('2d');
 
 
+// function getUserData(data){
+//     console.log(data);
 
-function getUserData(response){
-    // evt.preventDefault();
-    console.log(response);
+//     // make post/ajax request, sending new poop entry to /route
+//     // at callback function, make get/ajax request to get data
+//     // then at that callback from ajax, start parsing for graph/chart
 
-    // let formInputs = {
-    //   type: 29,
-    //   comment: "hello",
-    // }
+//     $.get("/data", function(data){
 
-    // localhost:5000/data?type=29&comment=hello
-    
-    //grab from database instead
+          
+  
+  
+//     });
+// }
 
-    // make post/ajax request, sending new poop entry to /route
-    // at callback function, make get/ajax request to get data
-    // then at that callback from ajax, start parsing for graph/chart
+// function submitData(evt) {
+//     //stop default reload from happening
+//     evt.preventDefault();
 
-    $.get("/data", function(data){
-          console.log(">>> inside $.get(/data) <<<")
-          console.log(">>> front end side <<<" + data);
-          console.log(chart_data);
-          let myChart = new Chart(ctx, {
+//     //store form data in dict
+//     //'input[name=type]:checked' matches selected
+//     //element in radio form and get value
+//     let formInputs = {
+//         // "type": $("#submit_form").val(),
+//         'type': $('input[name=type]:checked').val(),
+//         'comment': $("#comment").val()
+        
+//     };
+//     //verify value
+//     console.log(formInputs);
+
+//     //send data to route which will create new event
+//     //data comes from formInputs
+//     //callback function
+//     $.post("/user_account", 
+//          formInputs,
+//          function(result){
+//           alert(result);
+//          });
+// }
+
+//get data on /data route in server.py
+let getData = $.get("/data");
+
+//once get request finishes, call function and pass data:results
+getData.done(function(results){
+  console.log(results);
+  console.log(Object.keys(results));
+
+  let myChart = new Chart(ctx, {
     type: 'scatter',
     data: {
         datasets: [{
             label: 'Scatter Dataset',
             data: [{
                 //on server side format data as x/y coordinates
-                x: chart_data.x, 
+                x: -5,
                 //pass data here remove chart from callback
-                y: chart_data.y
+                y: 10 
             },  
             ]
         }]
@@ -163,38 +204,14 @@ function getUserData(response){
         }
     }
 });
-  
-  
-    });
-}
 
-function submitData(evt) {
-    //stop default reload from happening
-    evt.preventDefault();
 
-    //store form data in dict
-    //'input[name=type]:checked' matches selected
-    //element in radio form and get value
-    let formInputs = {
-        // "type": $("#submit_form").val(),
-        'type': $('input[name=type]:checked').val(),
-        'comment': $("#comment").val()
-        
-    };
-    //verify value
-    console.log(formInputs);
+});
 
-    //send data to route which will create new event
-    //data comes from formInputs
-    //callback function
-    $.post("/user_account", 
-         formInputs,
-         getUserData);
-}
 
 // event listener on form instead of button
 // get radio data and pass to callback function
-$("#submit_form").on("submit", submitData)
+$("#submit_form").on("submit") //removed submitData callback
 
 </script>
 

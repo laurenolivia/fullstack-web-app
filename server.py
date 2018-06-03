@@ -145,12 +145,8 @@ def submit_data():
     db.session.add(new_event)
     db.session.commit()
 
-    #make request to .json route
-    #return jsonify
-    #return needs to be in the form of a dictionary
-
-    # return redirect("/user_account")
-    return "the data"
+    
+    return redirect("/user_account")
 
 @app.route("/data")
 def get_user_data():
@@ -163,15 +159,13 @@ def get_user_data():
     if session.get('user'):
         user_id = session.get('user')  # <-- why get same num twice?
         user = User.query.get(user_id) # <-- why get same num twice?
-    
-
-
-    user_event_at = []
-    user_type_id = []    
+       
 
     # user_events stores a list of objects
     user_events = Event.query.filter_by(user_id=user_id).all()
 
+    d = {}
+    dlist = []
     
     user_data = {}
 
@@ -180,44 +174,34 @@ def get_user_data():
         #store every type_name as key with empty list
         user_data[i.event_type.type_name] = []
 
-        
+    
+    for i in user_data:
+        #this will return list of dict where key = "type" val = "Type 1"
+        d["type"] = i
+        dlist.append(d)
 
-    times = []
+    print dlist    
 
+
+    
     for i in user_events:
     	#convert Datetime obj to string
         i.event_at = i.event_at.strftime('%B %d, %Y')
         #append event_at to key(type_name)
         user_data[i.event_type.type_name].append(i.event_at)
+        # dlist.append(user_data)
+
+    
+
          
 
     print ">>> Inside /data route <<<"
-    print ">>> Completed for loops <<<"
-    print ">>> Printing user_data NEXT <<<"
     print user_data
     print type(user_data)
-        
-        
-        #make list of dictionaries
-        #x: dates
-        #y: types
-
-        #pass object back to function(data)
-
-    chart_data = [{
-    "x": [times],
-    "y": ["Type 1", "Type 2", "Type 3", "Type 4", "Type 5", "Type 6", "Type 7" ]
-    }] 
-
-    print ">>> AFTER INSTANTIATING chart_data <<<"
-    print type(chart_data["x"])
-    print chart_data["x"]
-    print type(chart_data["y"])
-    print chart_data["y"]
-    print ">>> Exiting /data route <<<"
     
-    #user_data is a dictionary; type=key val=time
-    return jsonify({x: days, y: types})
+        
+        
+    return jsonify(user_data)
     
 
 
