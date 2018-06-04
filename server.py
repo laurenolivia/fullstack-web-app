@@ -176,10 +176,11 @@ def get_user_data():
 
     
     for i in user_data:
-        #this will return list of dict where key = "type" val = "Type 1"
+        #FIX THIS. NOT RETURNING WHAT YOU NEED.
         d["type"] = i
         d["date"] = user_data[i]
         dlist.append(d)
+        d = {}
 
     print dlist    
 
@@ -191,17 +192,9 @@ def get_user_data():
         #append event_at to key(type_name)
         user_data[i.event_type.type_name].append(i.event_at)
         # dlist.append(user_data)
-
-    
-
-         
-
-    print ">>> Inside /data route <<<"
-    print user_data
-    print type(user_data)
     
         
-        
+    print dlist    
     return jsonify(dlist)
     
 

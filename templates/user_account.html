@@ -3,7 +3,7 @@
 
 {% block body %}
     
-Welcome, {{ session['fname'] }}!
+Welcome, {{ session['fname'] }}!  Have you pooped today?
 <hr> 
     
 {% endblock %}
@@ -24,7 +24,7 @@ Welcome, {{ session['fname'] }}!
 <!-- server.py will get data from this form -->
 <!-- and create new instance of event on Event table -->
 
-<form id="submit_form" action="/user_account" method="POST">
+<form id="submit_form container" action="/user_account" method="POST">
 
   <div class="poop_img" id="t1">
    <h1>Type 1</h1>
@@ -74,7 +74,7 @@ Welcome, {{ session['fname'] }}!
         <textarea id="comment" name="comment"></textarea>
     </div>
     
-    <input type="submit" name="Submit">
+    <input type="submit" name="Submit" id="submit_button">
 
 </form>
 
@@ -177,7 +177,7 @@ let getData = $.get("/data");
 //once get request finishes, call function and pass data:results
 getData.done(function(results){
   console.log(results);
-  console.log(Object.keys(results));
+  
 
   let myChart = new Chart(ctx, {
     type: 'scatter',
