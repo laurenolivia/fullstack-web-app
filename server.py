@@ -172,18 +172,17 @@ def get_user_data():
     for i in user_events:
         #print i.event_type.type_name
         #store every type_name as key with empty list
-        user_data[i.event_type.type_name] = []
+        user_data[i.event_type.type_id] = []
 
     
-    for i in user_data:
-        #FIX THIS. NOT RETURNING WHAT YOU NEED.
-        d["type"] = i
-        d["date"] = user_data[i]
-        dlist.append(d)
-        d = {}
-
-    print dlist    
-
+    d = {}
+    dlist = []
+    for type in user_data:
+        for date in user_data[type]:
+            d["y"] = type
+            d["x"] = date
+            dlist.append(d)  
+            d = {}
 
     
     for i in user_events:
