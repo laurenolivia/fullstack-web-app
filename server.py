@@ -174,27 +174,30 @@ def get_user_data():
         #store every type_name as key with empty list
         user_data[i.event_type.type_id] = []
 
-    
-    d = {}
-    dlist = []
-    for type in user_data:
-        for date in user_data[type]:
-            d["y"] = type
-            d["x"] = date
-            dlist.append(d)  
-            d = {}
 
     
     for i in user_events:
     	#convert Datetime obj to string
         i.event_at = i.event_at.strftime('%B %d, %Y')
         #append event_at to key(type_name)
-        user_data[i.event_type.type_name].append(i.event_at)
+        user_data[i.event_type.type_id].append(i.event_at)
         # dlist.append(user_data)
     
+
+    d = {}
+    dlist = []
+    for types in user_data:
+        for date in user_data[types]:
+            d["y"] = types
+            d["x"] = date
+            dlist.append(d)  
+            d = {}
+
+    result = {"data": dlist}        
+
         
-    print dlist    
-    return jsonify(dlist)
+    print result     
+    return jsonify(result)
     
 
 

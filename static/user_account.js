@@ -24,4 +24,16 @@ for (let img of poopImages) {
     });    
 }
 
+let submit = document.getElementyById("#submit_form");
+
+// submit.addEventListener("mouseover", function(){
+//     this.style.background-color
+// });
+
+// submit.addEventListener("mouseout", function(){
+//     this.style
+// })
+
+$("#spanText").attr('style',  'background-color:gray');
+
 

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block body %}
     
 Welcome, {{ session['fname'] }}!  Have you pooped today?
@@ -198,7 +197,7 @@ getData.done(function(results){
         hoverMode: 'single',  //should always use single for scatter chart
         scales: {
             xAxes: [{
-                type: 'linear',
+                type: 'time',
                 position: 'bottom'
             }]
         }
