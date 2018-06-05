@@ -16,6 +16,13 @@ Welcome, {{ session['fname'] }}!  Have you pooped today?
 
 
 <div id="submit_data container">
+  
+
+<ul>
+  <li>Healthy Food leads to healthy poop</li>
+  <li>Colon cancer is on the rise</li>
+  <li>It's time to know your poop</li>
+</ul>
 
 <p>Enter Today's Data:</p>
 
@@ -201,6 +208,9 @@ getData.done(function(results){
 // get radio data and pass to callback function
 $("#submit_form").on("submit") //removed submitData callback
 
+$("input:radio").change(function () {
+    $("#submit_button").attr("disabled", false);
+});
 </script>
 
 <script type="text/javascript" src="/static/user_account.js"></script>

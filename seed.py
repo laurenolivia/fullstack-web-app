@@ -58,22 +58,35 @@ class Seed_Data(object):
                         comment='very light brown', event_at='2018-06-03')
         event_4 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
                         comment='lumpy, brown', event_at='2018-06-04')
-        event_5 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+        event_5 = Event(user_id=self.user_1.user_id, type_id=self.type_4.type_id, \
                          comment='lumpy, brown', event_at='2018-06-05')
-        event_6 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
-                         comment='lumpy, brown', event_at='2018-06-06')
-        event_7 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
-                         comment='lumpy, brown', event_at='2018-06-07')
-        event_8 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+        event_6 = Event(user_id=self.user_1.user_id, type_id=self.type_4.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-05')
+        event_7 = Event(user_id=self.user_1.user_id, type_id=self.type_4.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-05')
+        event_8 = Event(user_id=self.user_1.user_id, type_id=self.type_4.type_id, \
                          comment='lumpy, brown', event_at='2018-06-08')
-        event_9 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+        event_9 = Event(user_id=self.user_1.user_id, type_id=self.type_3.type_id, \
                          comment='lumpy, brown', event_at='2018-06-09')
-        event_10 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+        event_10 = Event(user_id=self.user_1.user_id, type_id=self.type_2.type_id, \
                          comment='lumpy, brown', event_at='2018-06-10')
+        event_11 = Event(user_id=self.user_1.user_id, type_id=self.type_6.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-10')
+        event_12 = Event(user_id=self.user_1.user_id, type_id=self.type_6.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-10')
+        event_13 = Event(user_id=self.user_1.user_id, type_id=self.type_6.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-11')
+        event_14 = Event(user_id=self.user_1.user_id, type_id=self.type_6.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-12')
+        event_15 = Event(user_id=self.user_1.user_id, type_id=self.type_7.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-12')
 
 
 
-        db.session.add_all([event_1, event_2, event_3, event_4])
+
+        db.session.add_all([event_1, event_2, event_3, event_4, event_5, event_6,
+                            event_7, event_8, event_9, event_10, event_11, 
+                            event_12, event_13, event_14, event_15])
         db.session.commit()
 
 
