@@ -81,23 +81,6 @@ Welcome, {{ session['fname'] }}!  Have you pooped today?
 </div>
 
 
-<div id="display_data">
-
-<!-- user_events queries Events table -->
-<!-- .all() on user_events returns list of objects -->
-{% for event in user_events %}
-
-<p> <i>Type Name: </i> {{ event.event_type.type_name }}  
-    <!-- event.event_at will access formatting from -->
-    <!-- server.py on /user_account route -->
-    <i>Date: </i>{{ event.event_at }} 
-    <i>Comment: </i>{{ event.comment }} </p>
-
-{% endfor %}
- 
-
-</div>
-
 <div style="width:75%" class='container'>
 <canvas id="myChart" width="600" height="400"></canvas>
 <p id="caption">This chart is displaying your poop data. Poop away!</p>
@@ -173,21 +156,34 @@ let ctx = document.getElementById('myChart').getContext('2d');
 //get data on /data route in server.py
 let getData = $.get("/data");
 
-//once get request finishes, call function and pass data:results
+//once get request finishes, call function and pass data as results param
 getData.done(function(results){
-  console.log(results);
-  
 
+  dictResults = results.data;
+  
+  for (let keyValue of dictResults){
+    let date = keyValue.x
+    console.log(date);
+    keyValue = moment(date, "MM-DD-YY")
+  }; 
+
+
+  // console.log(dictResults);
+  console.log(Object.values(dictResults));
+
+  // dictTypes = Object.values(dictResults);
+  // console.log(dictTypes);
+
+  // dictTimes = moment()
+   
+  
   let myChart = new Chart(ctx, {
     type: 'scatter',
     data: {
         datasets: [{
             label: 'Scatter Dataset',
-            data: [{
-                //on server side format data as x/y coordinates
-                x: -5,
-                //pass data here remove chart from callback
-                y: 10 
+            data: [{ dictResults
+               
             },  
             ]
         }]
