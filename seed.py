@@ -51,14 +51,28 @@ class Seed_Data(object):
     def event_data(self):
 
         event_1 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
-                         comment='lumpy, brown', event_at='2018-01-24')
+                         comment='lumpy, brown', event_at='2018-06-01')
         event_2 = Event(user_id=self.user_1.user_id, type_id=self.type_3.type_id, \
-                        comment='long, hard to pass', event_at='2018-03-11')
-        event_3 = Event(user_id=self.user_2.user_id, type_id=self.type_6.type_id, \
-                        comment='very light brown', event_at='2018-05-14')
-        event_4 = Event(user_id=self.user_3.user_id, type_id=self.type_1.type_id, \
-                        comment='lumpy, brown', event_at='2018-02-22')
-        
+                        comment='long, hard to pass', event_at='2018-06-02')
+        event_3 = Event(user_id=self.user_1.user_id, type_id=self.type_6.type_id, \
+                        comment='very light brown', event_at='2018-06-03')
+        event_4 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                        comment='lumpy, brown', event_at='2018-06-04')
+        event_5 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-05')
+        event_6 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-06')
+        event_7 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-07')
+        event_8 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-08')
+        event_9 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-09')
+        event_10 = Event(user_id=self.user_1.user_id, type_id=self.type_1.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-10')
+
+
+
         db.session.add_all([event_1, event_2, event_3, event_4])
         db.session.commit()
 

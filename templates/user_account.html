@@ -164,28 +164,21 @@ getData.done(function(results){
   for (let keyValue of dictResults){
     let date = keyValue.x
     console.log(date);
-    keyValue = moment(date, "MM-DD-YY")
+    // keyValue.x = moment(date).format("MMMM DD, YYYY");
+    keyValue.x = moment(date,"MMMM DD, YYYY").toDate();
+    console.log(keyValue);
   }; 
 
-
-  // console.log(dictResults);
-  console.log(Object.values(dictResults));
-
-  // dictTypes = Object.values(dictResults);
-  // console.log(dictTypes);
-
-  // dictTimes = moment()
-   
+   console.log("print final dictResults")
+   console.log(dictResults);
   
   let myChart = new Chart(ctx, {
     type: 'scatter',
     data: {
         datasets: [{
             label: 'Scatter Dataset',
-            data: [{ dictResults
-               
-            },  
-            ]
+            data: dictResults
+            
         }]
     },
     options: {
