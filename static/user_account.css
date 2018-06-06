@@ -1,0 +1,50 @@
+body{
+
+    padding: 70px;
+    background-color: #e8dede;
+    margin: 0;
+    font-family: "Avenir", "Montserrat";
+}
+
+#container {
+
+    max-width: 600px;
+    margin: 20px auto;
+    }
+
+
+.poop_img {
+
+    width: 30%;
+    margin: 1.66%;
+    /*background: purple;*/
+    float: left;
+    padding-bottom: 30%;
+    border-radius: 15%;
+    transition: background 0.5s;
+    -webkit-transition: background 0.5s;
+    -moz-transition: background 0.5s;
+}
+
+#submit_button {
+    border: none;
+    height: 100%;
+    background: steelblue;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    font-weight: 700;
+    font-size: inherit;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    outline: none;
+
+}
+
+
+#submit_button:hover {
+    color: white;
+    background-color: steelblue;
+}
+
