@@ -25,47 +25,55 @@ Welcome, {{ session['fname'] }}!  Have you pooped today?
 <!-- and create new instance of event on Event table -->
 
 <!-- this form had an action of /user_account and method = POST -->
-<form id="submit_form container" action="/user_account" method="POST">  
+<form id="submit_form container" action="/user_account" method="POST"> 
+
+ <!-- removed required from type 1 radio -->
+ <!-- delete name="type" from all radio buttons -->
+
+<input style="display: none" type="radio" name="type" id="type_1" class="poop_img">
+<label for="type_1">
+  <img src="/static/poopimages/t1.jpg">
+</label>
 
   <div class="poop_img" id="t1">
    <h1>Type 1</h1>
-   <input style="display: none" type="radio" name="type" value="1" required>
+    <input style="display: none" type="radio" name="type" value="1">
     <img style="display: none" src="/static/poopimages/t1.jpg">
   </div>  
 
   <div class="poop_img" id="t2">
-    <h1>Type 2</h1>
-   <input style="display: none" type="radio" name="type" value="2" required>
+   <h1>Type 2</h1>
+    <input style="display: none" type="radio" name="type" value="2">
     <img style="display: none" src="/static/poopimages/t2.jpg">
   </div>  
 
   <div class="poop_img" id="t3">
     <h1>Type 3</h1>
-   <input style="display: none" type="radio" name="type" value="3" required>
+   <input style="display: none" type="radio" name="type" value="3">
     <img style="display: none" src="/static/poopimages/t3.jpg">
   </div>  
 
   <div class="poop_img" id="t4">
     <h1>Type 4</h1>
-   <input style="display: none" type="radio" name="type" value="4" required>
+   <input style="display: none" type="radio" name="type" value="4">
     <img style="display: none" src="/static/poopimages/t4.jpg">
   </div>  
 
   <div class="poop_img" id="t5">
     <h1>Type 5</h1>
-   <input style="display: none" type="radio" name="type" value="5" required>
+   <input style="display: none" type="radio" name="type" value="5">
     <img style="display: none" src="/static/poopimages/t5.jpg">
   </div>  
 
   <div class="poop_img" id="t6">
     <h1>Type 6</h1>
-   <input style="display: none" type="radio" name="type" value="6" required>
+   <input style="display: none" type="radio" name="type" value="6">
     <img style="display: none" src="/static/poopimages/t6.jpg">
   </div>  
 
   <div class="poop_img" id="t7">
     <h1>Type 7</h1>
-   <input style="display: none" type="radio" name="type" value="7" required>
+   <input style="display: none" type="radio" name="type" value="7">
     <img style="display: none" src="/static/poopimages/t7.jpg">
   </div>  
 
@@ -201,7 +209,7 @@ getData.done(function(results){
 
 // event listener on form instead of button
 // get radio data and pass to callback function
-// $("#submit_form").on("submit") //removed submitData callback
+$("#submit_form").on("submit") //removed submitData callback
 
 // // $("input:radio").change(function () {
 //     $("#submit_button").prop("disabled", false);

@@ -2,8 +2,9 @@
 
 // get all poop images by class name
 let poopImages = document.querySelectorAll(".poop_img");
+let message = document.getElementById("messageDisplay");
 
-// loop through poopimages
+// loop through class of poopimages
 for (let img of poopImages) {
     // console.log(img);
     // on page load display h1 tag (children[0]) but
@@ -24,16 +25,21 @@ for (let img of poopImages) {
     });    
 }
 
-// let submit = document.getElementById("#submit_form");
 
-// submit.addEventListener("mouseover", function(){
-//     this.style.background-color
-// });
 
-// submit.addEventListener("mouseout", function(){
-//     this.style
-// })
+// replace these with actual headlines from the news
+// link them to the news article
+let headlines = ["cancer is on the rise", "healthy food means healthy poop",
+                "more young people are dying of colon cancer"]
 
-// $("#spanText").attr('style',  'background-color:gray');
+function getHeadline(){
+
+    for (let i of headlines){
+        message.textContent = i;
+    }
+}                
+
+
+
 
 

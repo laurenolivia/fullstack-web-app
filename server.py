@@ -135,9 +135,6 @@ def submit_data():
     user_id = session.get("user")
     poop_type = request.form.get("type")
     comment = request.form.get("comment")
-    print 'user_id', user_id
-    print 'poop_type', poop_type
-    print 'comment', comment
     new_event = Event(user_id=user_id, comment=comment, 
                         event_at=dt_pac,   #replaced datetime.date.today()
                             type_id=int(poop_type))

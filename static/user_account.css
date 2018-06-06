@@ -12,7 +12,6 @@ body{
     margin: 20px auto;
     }
 
-
 .poop_img {
 
     width: 30%;
@@ -42,9 +41,26 @@ body{
 
 }
 
+#headlines {
+    height: 30px;
+    background: #f7efef;
+    text-align: center;
+}
 
+/*
 #submit_button:hover {
     color: white;
     background-color: steelblue;
-}
+}*/
+
+/*.poop_img > input{ /* HIDE RADIO */
+  /*visibility: hidden;  Makes input not-clickable */
+  /*position: absolute;  Remove input from document flow */
+
+/*.poop_img > input + img{ /* IMAGE STYLES */
+  /*cursor:pointer;*/
+  /*border:2px solid red;*/
+
+/*.poop_img > input[type=radio]:checked + label>img{ /* (RADIO CHECKED) IMAGE STYLES */*/
+  /*border:2px solid #f00;*/
 
