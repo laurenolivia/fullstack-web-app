@@ -1,7 +1,10 @@
+
+
 body{
 
+    top: 20px;
     padding: 70px;
-    background-color: #e8dede;
+    background-position: center;
     margin: 0;
     font-family: "Avenir", "Montserrat";
 }
@@ -41,11 +44,7 @@ body{
 
 }
 
-#headlines {
-    height: 30px;
-    background: #f7efef;
-    text-align: center;
-}
+
 
 /*
 #submit_button:hover {

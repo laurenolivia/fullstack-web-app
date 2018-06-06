@@ -2,7 +2,11 @@
 
 // get all poop images by class name
 let poopImages = document.querySelectorAll(".poop_img");
-let message = document.getElementById("messageDisplay");
+
+let message = document.getElementById("messageDisplay").innerHTML;
+let headlines = ["cancer is on the rise", "healthy food means healthy poop",
+                "more young people are dying of colon cancer"]
+
 
 // loop through class of poopimages
 for (let img of poopImages) {
@@ -25,19 +29,17 @@ for (let img of poopImages) {
     });    
 }
 
-
-
-// replace these with actual headlines from the news
-// link them to the news article
-let headlines = ["cancer is on the rise", "healthy food means healthy poop",
-                "more young people are dying of colon cancer"]
+// SCROLL THROUGH ARRAY OF NEWS HEADLINES ON HOMEPAGE
 
 function getHeadline(){
-
     for (let i of headlines){
-        message.textContent = i;
+        message.text = i;
+        console.log(i);
     }
-}                
+
+};
+
+
 
 
 

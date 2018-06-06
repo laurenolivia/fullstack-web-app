@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
+
+
+
+
 {% block content %} 
+<body class="homepage-bd">
+
 
 <div id="headlines">
-    <span id="messageDisplay">Am I scrolling news headlines?</span>
+    <span id="messageDisplay"></span>
 </div>
 
 <h3>DUMP</h3>
@@ -16,11 +22,35 @@
     <input type="submit" name="Submit" value="Login">
 </form>
 
-<script type="text/javascript">
-    
-    window.setTimeout(getHeadline(), 100);
+
+<script>
+
+let headlines = ["Colon and Rectal Cancer Rising in Young People -NYTimes", "Colon cancer screening should start earlier, American Cancer Society says",
+                "Colon Cancer Screening: Not Just for the 50-Plus Set -Wall Street Journal", "Study: Obese Children Will Have 50% Higher Risk of Colon Cancer -The Atlantic", "For Reasons Unknown, Colon and Rectal Cancer Rates Are Rising In People Under 50 -Forbes"];
+let delay = 3000;
+let header = document.getElementById("messageDisplay");
+
+headlines.forEach(function(messageDisplay, i) {
+  setTimeout(function() {
+    header.innerText = messageDisplay;
+  }, delay * i);
+});
+
+
+
+
+// let showNews = setInterval(getHeadline(), 1000);
+
+// function getHeadline(){
+//     for (let i of headlines) {
+//         document.getElementById("messageDisplay").innerHTML = i;
+//     }
+
+// };
+
 </script>
 
 {% endblock %}
+
 
 
