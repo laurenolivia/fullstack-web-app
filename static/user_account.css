@@ -15,6 +15,7 @@ body{
 .poop_img {
 
     width: 30%;
+    height: 30px;
     margin: 1.66%;
     /*background: purple;*/
     float: left;
@@ -41,22 +42,7 @@ body{
 
 }
 
-
-
-/*
-#submit_button:hover {
-    color: white;
-    background-color: steelblue;
-}*/
-
-/*.poop_img > input{ /* HIDE RADIO */
-  /*visibility: hidden;  Makes input not-clickable */
-  /*position: absolute;  Remove input from document flow */
-
-/*.poop_img > input + img{ /* IMAGE STYLES */
-  /*cursor:pointer;*/
-  /*border:2px solid red;*/
-
-/*.poop_img > input[type=radio]:checked + label>img{ /* (RADIO CHECKED) IMAGE STYLES */
-  /*border:2px solid #f00;*/
+#welcome {
+    text-align: center;
+}
 

@@ -208,7 +208,7 @@ def logout():
         flash("You have been logged out. Have a wonderful day!")
         return redirect("/home")
     else:
-        flash("You are logged out.")
+        # flash("You are logged out.")
         return redirect("/home")
 
 @app.route("/chart")

@@ -3,10 +3,6 @@
 // get all poop images by class name
 let poopImages = document.querySelectorAll(".poop_img");
 
-let message = document.getElementById("messageDisplay").innerHTML;
-// let headlines = ["cancer is on the rise", "healthy food means healthy poop",
-//                 "more young people are dying of colon cancer"]
-
 
 // loop through class of poopimages
 for (let img of poopImages) {
