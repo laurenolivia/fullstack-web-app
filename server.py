@@ -77,7 +77,6 @@ def validate_login():
         if password == user.password:
             session['user'] = user.user_id
             session['fname'] = user.fname 
-            flash("You are logged in.")
             return redirect("/user_account")
         else:
             flash("Invalid password. Please try again.")

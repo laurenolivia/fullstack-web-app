@@ -90,6 +90,8 @@ def example_data():
 
     Lauren = User(fname='Lauren', lname='Burwell', username='lburwell', 
                     password='lburwell')
+    event_1 = Event(user_id=self.user_1.user_id, type_id=self.type_7.type_id, \
+                         comment='lumpy, brown', event_at='2018-06-12')
 
     
     db.session.add(Lauren)
