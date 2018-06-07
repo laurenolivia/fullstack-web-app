@@ -5,10 +5,10 @@
 
 
 {% block content %} 
-<body class="homepage-bd">
+<div class="home">
 
 
-<div id="headlines">
+<div id="news">
     <span id="messageDisplay"></span>
 </div>
 
@@ -25,9 +25,15 @@
 
 <script>
 
-let headlines = ["Colon and Rectal Cancer Rising in Young People -NYTimes", "Colon cancer screening should start earlier, American Cancer Society says",
-                "Colon Cancer Screening: Not Just for the 50-Plus Set -Wall Street Journal", "Study: Obese Children Will Have 50% Higher Risk of Colon Cancer -The Atlantic", "For Reasons Unknown, Colon and Rectal Cancer Rates Are Rising In People Under 50 -Forbes"];
-let delay = 3000;
+let headlines = ["Colon and Rectal Cancer Rising in Young People  -NYTimes", 
+        "Colon cancer screening should start earlier, American Cancer Society says",
+        "Exercise and Diet Can Help Lower Your Risk of Colon Cancer  -Washington Post",
+        "Why Are More Young Americans Getting Colon Cancer?  -NPR",
+        "Colon Cancer Screening: Not Just for the 50-Plus Set  -Wall Street Journal", 
+        "How well do you know your shit?", 
+        "Study: Obese Children Will Have 50% Higher Risk of Colon Cancer  -The Atlantic", 
+        "For Reasons Unknown, Colon and Rectal Cancer Rates Are Rising In People Under 50  -Forbes"];
+let delay = 4000;
 let header = document.getElementById("messageDisplay");
 
 headlines.forEach(function(messageDisplay, i) {
@@ -38,18 +44,9 @@ headlines.forEach(function(messageDisplay, i) {
 
 
 
-
-// let showNews = setInterval(getHeadline(), 1000);
-
-// function getHeadline(){
-//     for (let i of headlines) {
-//         document.getElementById("messageDisplay").innerHTML = i;
-//     }
-
-// };
-
 </script>
 
+</div>
 {% endblock %}
 
 

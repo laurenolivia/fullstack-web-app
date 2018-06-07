@@ -4,8 +4,8 @@
 let poopImages = document.querySelectorAll(".poop_img");
 
 let message = document.getElementById("messageDisplay").innerHTML;
-let headlines = ["cancer is on the rise", "healthy food means healthy poop",
-                "more young people are dying of colon cancer"]
+// let headlines = ["cancer is on the rise", "healthy food means healthy poop",
+//                 "more young people are dying of colon cancer"]
 
 
 // loop through class of poopimages
@@ -28,16 +28,6 @@ for (let img of poopImages) {
         this.children[2].style.display = "none";
     });    
 }
-
-// SCROLL THROUGH ARRAY OF NEWS HEADLINES ON HOMEPAGE
-
-function getHeadline(){
-    for (let i of headlines){
-        message.text = i;
-        console.log(i);
-    }
-
-};
 
 
 
