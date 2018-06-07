@@ -1,15 +1,16 @@
-#homepg {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  background: url("/static/homepage.jpg");
+/*#homepg {
+  position: absolute;  
   background-size: 100% auto;
   object-fit: cover;
 
-  /* Preserve aspect ratio */
-  max-width: 50%;
-  max-height: 50%;
+}*/
+
+body#apple {
+    background: url("homepage.jpg");
+    object-fit: cover;
+    background-size: 100% auto;
 }
+
 
 body{
     

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
+{% block body_id %} apple {% endblock %}
+
 {% block content %}
 
 
     <!-- <div class="jumbotron jumbotron-fluid">  -->
     <!-- <img class='img-responsive' id='homepg' src='/static/homepage.jpg' alt="apples" margin="0"> -->    
-
-{% block body_id %} {% endblock %}
 
 <div id="news">
     <span id="messageDisplay"></span>
@@ -37,6 +37,7 @@ let headlines = ["Colon and Rectal Cancer Rising in Young People  -NYTimes",
         "For Reasons Unknown, Colon and Rectal Cancer Rates Are Rising In People Under 50  -Forbes", 
         "The solution is simple. Track your poop."];
 
+
 let delay = 4000;
 let header = document.getElementById("messageDisplay");
 
@@ -49,8 +50,10 @@ headlines.forEach(function(messageDisplay, i) {
 
 </script>
 
- 
-
 {% endblock %}
+
+
+
+
 
 
