@@ -5,17 +5,17 @@
 
 }*/
 
-body#apple {
-    background: url("homepage.jpg");
-    object-fit: cover;
-    background-size: 100% auto;
+#background {
+    background-image: url("homepage.jpg");
+    background-size: cover;
+    height: 100%;
 }
 
 
-body{
+body, html{
     
     height: 100%;
-    width: 100%;
+    /*width: 100%;*/
     background-position: center;
     margin: 0;
     font-family: "Avenir", "Montserrat";
@@ -23,13 +23,14 @@ body{
 
 #news {
     text-align: center;
+    color: white;
 }
 
 
 .poop_img {
 
     width: 30%;
-    height: 30px;
+    height: 15px;
     margin: 1.66%;
     /*background: purple;*/
     float: left;

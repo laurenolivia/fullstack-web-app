@@ -83,7 +83,7 @@ class FlaskTestRoutes(TestCase):
     
     def test_submit_form(self):
         result = self.client.post("/user_account",
-                              data={"type_id": "type_7",
+                              data={"type_id": 7,
                                     "comment": "lumpy, brown"},
                               follow_redirects=True)
         self.assertEqual(result.status_code, 200)                          
