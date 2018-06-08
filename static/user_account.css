@@ -26,6 +26,11 @@ body, html{
     color: white;
 }
 
+#title {
+    color: white;
+    font-family: "Avenir", "Montserrat";
+}
+
 
 .poop_img {
 
