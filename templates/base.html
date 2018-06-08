@@ -18,18 +18,22 @@
 
 </head>
 <body>
+    <!-- <ul style="margin:0"> -->
 
+        {% for message in get_flashed_messages() %}
+        <!-- <li> -->
+            <div class="alert alert-light" role="alert" style="margin-bottom:0;">
+            {{ message }}
+            </div>
+        <!-- </li> -->
+        {% endfor %}
+    <!-- </ul> -->
     {% block body %}
     
     
     {% endblock %}
 
-    <ul>
-        {% for message in get_flashed_messages() %}
-        <li>{{ message }}</li>
-        {% endfor %}
 
-    </ul>
 
     {% block content %} ENTER PAGE CONTENT HERE {% endblock %}
         

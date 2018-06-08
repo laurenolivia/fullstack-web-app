@@ -1,8 +1,9 @@
 {%  extends "base.html" %}
 
 {% block content %}
+<div class="background">
 
-<h2>LOGIN HERE</h2>
+<h2 style="display:inline">LOGIN HERE</h2>
 
 <form action="/login", method="POST">
     <input type="text" name="Username" placeholder="Username" >
@@ -21,5 +22,5 @@
 
 </form>
 
-
+</div>
 {% endblock %}
