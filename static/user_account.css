@@ -5,6 +5,12 @@
 
 }*/
 
+
+h2#loginHere {
+    display: inline;
+    color: white;
+}
+
 .background {
     background-image: url("homepage.jpg");
     background-size: cover;
@@ -12,7 +18,8 @@
 }
 
 html {
-    overflow-y: hidden; 
+    /*overflow-y: hidden;*/
+    font-family: "Avenir", "Montserrat"; 
 }
 
 

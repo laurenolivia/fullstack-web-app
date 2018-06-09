@@ -3,7 +3,6 @@
 // get all poop images by class name
 let poopImages = document.querySelectorAll(".poop_img");
 
-
 // loop through class of poopimages
 for (let img of poopImages) {
     // console.log(img);
