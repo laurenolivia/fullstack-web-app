@@ -31,46 +31,46 @@
 
   
   <div class="poop_img" id="t1">
-   <h1>Type 1</h1>
+   <h1 class="poop_img_h1">Type 1</h1>
     <input style="display: none" type="radio" name="type" value="1" required>
     <img style="display: none" src="/static/poopimages/t1.jpg">
   </div>  
 
   
   <div class="poop_img" id="t2">
-   <h1>Type 2</h1>
+   <h1 class="poop_img_h1">Type 2</h1>
     <input style="display: none" type="radio" name="type" value="2" required>
     <img style="display: none" src="/static/poopimages/t2.jpg">
   </div>  
   
 
   <div class="poop_img" id="t3">
-    <h1>Type 3</h1>
+    <h1 class="poop_img_h1">Type 3</h1>
    <input style="display: none" type="radio" name="type" value="3" required>
     <img style="display: none" src="/static/poopimages/t3.jpg">
   </div>  
 
   <div class="poop_img" id="t4">
-    <h1>Type 4</h1>
+    <h1 class="poop_img_h1" >Type 4</h1>
    <input style="display: none" type="radio" name="type" value="4" required>
     <img style="display: none" src="/static/poopimages/t4.jpg">
   </div>  
   
 
   <div class="poop_img" id="t5">
-    <h1>Type 5</h1>
+    <h1 class="poop_img_h1" >Type 5</h1>
    <input style="display: none" type="radio" name="type" value="5" required>
     <img style="display: none" src="/static/poopimages/t5.jpg">
   </div>  
 
   <div class="poop_img" id="t6">
-    <h1>Type 6</h1>
+    <h1 class="poop_img_h1" >Type 6</h1>
    <input style="display: none" type="radio" name="type" value="6" required>
     <img style="display: none" src="/static/poopimages/t6.jpg">
   </div>  
 
   <div class="poop_img" id="t7">
-    <h1>Type 7</h1>
+    <h1 class="poop_img_h1" >Type 7</h1>
    <input style="display: none" type="radio" name="type" value="7" required>
     <img style="display: none" src="/static/poopimages/t7.jpg">
   </div>  
@@ -81,7 +81,7 @@
         <textarea id="comment" name="comment"></textarea>
     </div>
     
-    <input type="submit" name="Submit" id="submit_button">
+    <input id="submitLogin" class="btn btn-default btn-sm" type="submit" value="Submit">
 
 </form>
 
@@ -185,6 +185,14 @@ getData.done(function(results){
     data: {
         datasets: [{
             label: 'Scatter Dataset',
+            fill: false,
+            showLine: false,
+            pointBorderColor: "#FBACBE",
+            pointBorderWidth: 5,
+            pointHoverRadius: 8,
+            pointHoverBorderWidth: 2,
+            pointHoverBackgroundColor: "#FEFFFE",
+            pointHoverBorderColor: "FFFC99",
             data: dictResults
             
         }]

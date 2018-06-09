@@ -2,6 +2,8 @@
 
 // get all poop images by class name
 let poopImages = document.querySelectorAll(".poop_img");
+let poopImagesh1 = document.querySelectorAll(".poop_img_h1");
+
 
 // loop through class of poopimages
 for (let img of poopImages) {
@@ -23,10 +25,6 @@ for (let img of poopImages) {
         this.children[2].style.display = "none";
     });    
 }
-
-
-
-
 
 
 
