@@ -11,6 +11,11 @@ h2#loginHere {
     color: white;
 }
 
+h2#createAccount {
+    display: inline;
+    color: white;
+}
+
 .background {
     background-image: url("homepage.jpg");
     background-size: cover;
@@ -75,5 +80,6 @@ body, html{
 
 #welcome {
     text-align: center;
+    font-family: "Avenir", "Montserrat";
 }
 
