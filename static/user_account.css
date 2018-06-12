@@ -34,6 +34,8 @@ body, html{
 }
 
 #submitLogin {
+    text-align: center;
+    padding: 12px 20px;
 
 }
 
@@ -45,13 +47,29 @@ body, html{
 
 }
 
+#inputUsername {
+    text-align: center;
+    padding: 8px 15px; 
+    margin-top: 12%;
+}
+
+#inputPassword {
+    text-align: center;
+
+}
+
 h1 {
     text-align: center;
 }
 
-h2#loginHere {
+h4 {
+    text-align: center;
     display: inline;
     color: white;
+    font-family: "Avenir", "Montserrat";
+    margin-left: 47%;
+    margin-top: 20%;
+
 }
 
 h2#createAccount {
