@@ -2,7 +2,7 @@
 
 {% block body %}
     
-<p id="welcome">Welcome, {{ session['fname'] }}!  Have you pooped today?</p>
+<p id="userGreeting">Welcome, {{ session['fname'] }}!  Have you pooped today?</p>
 <hr> 
     
 {% endblock %}
@@ -12,25 +12,20 @@
 
 <form action="/logout">
     <!-- <input type="submit" name="Submit" value="Logout"> -->  
-  <button class="btn btn-default btn-md"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
+  <div id="logoutBtn">
+    <button class="btn btn-default btn-md"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
+  </div>
+
 </form>
 
 <div id="submit_data container">
 
-<!-- <p>Enter Today's Data:</p>
- -->
 <!-- this form submits data to db -->
 <!-- server.py will get data from this form -->
 <!-- and create new instance of event on Event table -->
 
 <!-- this form had an action of /user_account and method = POST -->
 <form id="submit_form container" action="/user_account" method="POST"> 
-
- <!-- removed required from type 1 radio -->
- <!-- delete name="type" from all radio buttons -->
-
-  
-  
 
   <div class="poop_img" id="t1">  
     
@@ -126,15 +121,17 @@
     </div>
   </div>
   
-
-
   
+  <div>
     <div>
         <p>Additional Comments:</p>
         <textarea id="comment" name="comment"></textarea>
     </div>
     
-    <input id="submitLogin" class="btn btn-default btn-sm" type="submit" value="Submit">
+    <div id="submitFormBtn">
+      <input class="btn btn-default btn-sm" type="submit" value="Submit">
+    </div>
+  </div>  
 
 </form>
 

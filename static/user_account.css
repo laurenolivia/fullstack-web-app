@@ -33,6 +33,18 @@ body, html{
     margin-top: 1px;
 }
 
+#submitLogin {
+
+}
+
+#logoutBtn {
+    
+}
+
+#submitFormBtn {
+
+}
+
 h1 {
     text-align: center;
 }
@@ -105,9 +117,10 @@ h3  {
 
 }
 
-#welcome {
+#userGreeting {
     text-align: center;
     font-family: "Avenir", "Montserrat";
+    font-size: 15px;
 }
 
 
