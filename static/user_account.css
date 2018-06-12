@@ -5,23 +5,6 @@
 
 }*/
 
-
-h2#loginHere {
-    display: inline;
-    color: white;
-}
-
-h2#createAccount {
-    display: inline;
-    color: white;
-}
-
-.background {
-    background-image: url("homepage.jpg");
-    background-size: cover;
-    height: 100%;
-}
-
 html {
     /*overflow-y: hidden;*/
     font-family: "Avenir", "Montserrat"; 
@@ -37,14 +20,58 @@ body, html{
     font-family: "Avenir", "Montserrat";
 }
 
-#news {
+
+#signUpBtn {
+    text-align: center;
+    padding: 5px 5px;
+    margin-top: 10%;
+}
+
+#loginBtn {
+    text-align: center;
+    padding: 5px 5px;
+    margin-top: 1px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2#loginHere {
+    display: inline;
+    color: white;
+}
+
+h2#createAccount {
+    display: inline;
+    color: white;
+}
+
+h3  {
+    text-align: center;
+}
+
+.background {
+    background-image: url("homepage.jpg");
+    background-size: cover;
+    height: 100%;
+}
+
+
+#scrollingNews {
     text-align: center;
     color: white;
 }
 
-#title {
+#appName {
     color: white;
     font-family: "Avenir", "Montserrat";
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+#messageDisplay {
+    font-size: 15px;
 }
 
 

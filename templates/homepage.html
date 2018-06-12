@@ -7,20 +7,24 @@
     <!-- <div class="jumbotron jumbotron-fluid">  -->
     <!-- <img class='img-responsive' id='homepg' src='/static/homepage.jpg' alt="apples" margin="0"> -->    
 
-<div id="news">
+<div id="scrollingNews">
     <span id="messageDisplay"></span>
 </div>
 
-<h3 id="title">Healthy Poop</h3>
+<h3 id="appName">H E A L T H Y   P O O P</h3>
 
 <form action="/register">
     <!-- <input type="submit" name="Submit" value="Sign Me Up!"></li> -->
-    <button class="btn btn-default btn-md"><i class="fa fa-user-plus" aria-hidden="true"></i>  Sign Me Up!</button>
+    <div id="signUpBtn">
+        <button  class="btn btn-default btn-md homePg"><i class="fa fa-user-plus" aria-hidden="true"></i>  Sign Me Up!</button>
+    </div>
 </form>
 
 <form action="/login">
     <!-- <input type="submit" name="Submit" value="Login" class="fa fa-user-plus" aria-hidden="true"> -->
-    <button class="btn btn-default btn-md"><i class="fa fa-user" aria-hidden="true"></i> Login</button>
+    <div id="loginBtn">
+        <button class="btn btn-default btn-md homePg"><i class="fa fa-user" aria-hidden="true"></i> Login</button>
+    </div>
 </form>
 
 
@@ -30,8 +34,7 @@ let headlines = ["Colon and Rectal Cancer Rising in Young People  -NYTimes",
         "Colon cancer screening should start earlier, American Cancer Society says",
         "Exercise and Diet Can Help Lower Your Risk of Colon Cancer  -Washington Post",
         "Why Are More Young Americans Getting Colon Cancer?  -NPR",
-        "Colon Cancer Screening: Not Just for the 50-Plus Set  -Wall Street Journal", 
-        "How well do you know your shit?", 
+        "Colon Cancer Screening: Not Just for the 50-Plus Set  -Wall Street Journal",  
         "Study: Obese Children Will Have 50% Higher Risk of Colon Cancer  -The Atlantic",
         "For Reasons Unknown, Colon and Rectal Cancer Rates Are Rising In People Under 50  -Forbes", 
         "The solution is simple. Track your poop."];
