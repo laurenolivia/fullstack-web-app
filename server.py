@@ -204,7 +204,7 @@ def logout():
     #if a user is stored in the session
     if session.get('user'):
         del session['user']
-        flash("You have been logged out. Have a wonderful day!")
+        # flash("You have been logged out. Have a wonderful day!")
         return redirect("/home")
     else:
         # flash("You are logged out.")

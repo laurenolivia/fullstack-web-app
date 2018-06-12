@@ -35,9 +35,9 @@ body, html{
 
 #submitLogin {
     text-align: center;
-    padding: 12px 20px;
-
+    margin-top: 8px;
 }
+
 
 #logoutBtn {
     
@@ -50,11 +50,20 @@ body, html{
 #inputUsername {
     text-align: center;
     padding: 8px 15px; 
-    margin-top: 12%;
+    margin-top: 8%;
 }
 
 #inputPassword {
     text-align: center;
+
+}
+
+.registrationInput {
+    text-align: center;
+    padding: 4px 15px;
+}
+
+#registrationForm {
 
 }
 
@@ -72,7 +81,7 @@ h4 {
 
 }
 
-h2#createAccount {
+h2#createAccountHeader {
     display: inline;
     color: white;
 }
@@ -93,7 +102,7 @@ h3  {
     color: white;
 }
 
-#appName {
+.appName {
     color: white;
     font-family: "Avenir", "Montserrat";
     margin-top: 20px;
@@ -110,7 +119,7 @@ h3  {
     width: 30%;
     height: 15px;
     margin: 1.66%;
-    /*background: purple;*/
+    text-align: center;
     float: left;
     padding-bottom: 30%;
     border-radius: 15%;

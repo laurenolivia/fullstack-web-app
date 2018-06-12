@@ -4,18 +4,31 @@
 {% block content %}
 <div class="background">
 
-<h2 id="createAccount">Create an Account</h2>
+<h2 id="createAccountHeader"> </h2>
 
 <form action="/validate_registration" method="POST">
-    <input type="text" name="First" placeholder="First Name"required>
-    <br>
-    <input type="text" name="Last" placeholder="Last Name">
-    <br>
-    <input type="text" name="Username" placeholder="Username" required>
-    <br>
-    <input type="text" name="Password" placeholder="Password" required>
-    <br>
-    <input id="submitLogin" class="btn btn-default" type="submit" value="Submit">
+    
+    <div id="registrationForm">
+        <div id="registerFirstName" class="registrationInput">
+            <input type="text" name="First" placeholder="First Name"required>
+        </div>
+
+        <div class="registrationInput">
+            <input type="text" name="Last" placeholder="Last Name">
+        </div>
+
+        <div class="registrationInput">
+            <input type="text" name="Username" placeholder="Username" required>
+        </div>
+
+        <div class="registrationInput">
+            <input type="text" name="Password" placeholder="Password" required>
+        </div>
+
+        <div id="signUpBtn">
+            <input class="btn btn-default btn-sm" type="submit" value="Sign Up">
+        </div>
+    </div>
 </form>
 
 </div>
