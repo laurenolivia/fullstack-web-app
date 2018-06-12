@@ -151,5 +151,13 @@ h3  {
     font-size: 15px;
 }
 
+form#submit_form {
+    width: 60%;
+    max-width: 1200px;
+    margin: auto;
+}
 
+.poop_form.container {
+    width: 100%;
+}
 
