@@ -155,12 +155,24 @@ h3  {
 }
 
 form#submit_form {
-    width: 60%;
+    width: 70%;
     max-width: 1200px;
     margin: auto;
 }
 
 .poop_form.container {
     width: 100%;
+}
+
+.type_caption {
+    font-family: "Avenir", "Montserrat";
+    font-size: 18px;
+}
+
+.numbers {
+    font-family: "Avenir", "Montserrat";
+    font-size: 40px;
+    color: #6BAB90;
+
 }
 
