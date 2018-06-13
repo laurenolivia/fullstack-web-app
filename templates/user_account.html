@@ -2,19 +2,19 @@
 
 {% block body %}
     
-<p id="userGreeting">Welcome, {{ session['fname'] }}!  Have you pooped today?</p>
-
-    
-{% endblock %}
-
-
-{% block content %}
-
 <form action="/logout">
     <!-- <input type="submit" name="Submit" value="Logout"> -->  
   <div id="logoutBtn">
     <button class="btn btn-default btn-md"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
   </div>
+
+{% endblock %}
+
+
+{% block content %}
+<p class="userGreeting">Welcome, {{ session['fname'] }}!</p>
+<p class="userGreeting">Hover over any number to identify your poop.</p>
+
 <hr>
 
 </form>
@@ -27,9 +27,9 @@
 
 <!-- this form had an action of /user_account and method = POST -->
 <form id="submit_form" action="/user_account" method="POST"> 
-<div  class="poop_form container">
-  <div class="row">
-  <div class="col">Commonality</div>
+  <div  class="poop_form container">
+    <div class="row">
+      <div class="col">Constipated</div>
 <!--     <div class="poop_img col" id="t1FAKE">  
         <div> 
           <h1 class="poop_img_h1">Commonaloty</h1>
@@ -45,7 +45,7 @@
 
     <div class="poop_img col" id="t1">  
         <div> 
-          <h1 class="poop_img_h1">Type 1</h1>
+          <h1 class="poop_img_h1">1</h1>
           <h3>Separate hard lumps. Hard to pass. (severe constipation)</h3>
         </div>
 
@@ -53,11 +53,11 @@
           <input style="display: none" type="radio" name="type" value="1" required>
           <img style="display: none" class="radio_img" src="/static/poopimages/t1.jpg">
         </div>  
-    </div>  <!--  closes  -->
+    </div>  <!--  closes Type  -->
 
     <div class="poop_img col" id="t2">  
       <div>
-        <h1 class="poop_img_h1">Type 2</h1>
+        <h1 class="poop_img_h1">2</h1>
         <h3>Sausage-shaped but very lumpy. (mild constipation)</h3>
       </div>
 
@@ -65,15 +65,15 @@
         <input style="display: none" type="radio" name="type" value="2" required>
         <img style="display: none" class="radio_img" src="/static/poopimages/t2.jpg">
       </div>
-    </div>
-  </div>
+    </div>  <!--  closes Type  -->
+  </div>  <!--  closes Row -->
 
   <div class="row">
-    <div class="col">Commonality</div>
+    <div class="col">Normal</div>
     <div class="poop_img col" id="t3">  
       
       <div>
-        <h1 class="poop_img_h1">Type 3</h1>
+        <h1 class="poop_img_h1">3</h1>
         <h3>Sausage-shaped with cracks in the surface. (normal)</h3>
       </div>
 
@@ -81,13 +81,12 @@
         <input style="display: none" type="radio" name="type" value="3" required>
         <img style="display: none" class="radio_img" src="/static/poopimages/t3.jpg">
       </div>
-    </div>
+    </div>  <!--  closes Type  -->
 
 
     <div class="poop_img col" id="t4">  
-      
       <div>
-        <h1 class="poop_img_h1">Type 4</h1>
+        <h1 class="poop_img_h1">4</h1>
         <h3>Sausage-shaped but smooth, snake-like texture. (normal)</h3>
       </div>
 
@@ -95,15 +94,15 @@
         <input style="display: none" type="radio" name="type" value="4" required>
         <img style="display: none" class="radio_img" src="/static/poopimages/t4.jpg">
       </div>
-    </div>
-  </div>
+    </div>  <!--  closes Type -->
+  </div>  <!--  closes Row -->
 
   <div class="row">
-    <div class="col"><p>Commonality</p></div>
+    <div class="col"><p>Diarrhea</p></div>
     <div class="poop_img col" id="t5">  
       
       <div>
-        <h1 class="poop_img_h1">Type 5</h1>
+        <h1 class="poop_img_h1">5</h1>
         <h3>Fluffy blobs with clear edges. (lacking fibre)</h3>
       </div>
 
@@ -111,12 +110,12 @@
         <input style="display: none" type="radio" name="type" value="5" required>
         <img style="display: none" class="radio_img" src="/static/poopimages/t5.jpg">
       </div>
-    </div>
+    </div>  <!--  closes Type -->
 
     <div class="poop_img col" id="t6">  
       
       <div>
-        <h1 class="poop_img_h1">Type 6</h1>
+        <h1 class="poop_img_h1">6</h1>
         <h3>Mushy consistency with ragged edges. (mild diarrhea)</h3>
       </div>
 
@@ -124,12 +123,12 @@
         <input style="display: none" type="radio" name="type" value="6" required>
         <img style="display: none" class="radio_img" src="/static/poopimages/t6.jpg">
       </div>
-    </div>
+    </div>  <!--  closes Type -->
 
     <div class="poop_img col" id="t7">  
       
       <div>
-        <h1 class="poop_img_h1">Type 7</h1>
+        <h1 class="poop_img_h1">7</h1>
         <h3>Liquid consistency with no solid pieces. (severe diarrhea)</h3>
       </div>
 
@@ -137,8 +136,8 @@
         <input style="display: none" type="radio" name="type" value="7" required>
         <img style="display: none" class="radio_img" src="/static/poopimages/t7.jpg">
       </div>
-    </div>
-  </div>
+    </div>  <!--  closes Type -->
+  </div>   <!--  closes Row -->
   
   <div class="row">
     <div>
@@ -159,9 +158,8 @@
 </div>
 
 
-<div style="width:75%" class='container'>
-<canvas id="myChart" width="600" height="400"></canvas>
-<p id="caption">This chart is displaying your poop data. Poop away!</p>
+<div style="width:70%" class='container'>
+  <canvas id="myChart" width="600" height="400"></canvas>
 </div>
 
 
@@ -254,7 +252,7 @@ getData.done(function(results){
     type: 'scatter',
     data: {
         datasets: [{
-            label: 'Scatter Dataset',
+            label: 'Poop Plotter',
             fill: false,
             showLine: false,
             pointRadius: 5,

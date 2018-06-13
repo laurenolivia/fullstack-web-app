@@ -40,6 +40,8 @@ body, html{
 
 
 #logoutBtn {
+    margin-left: 90%;
+    margin-top: 1%;
     
 }
 
@@ -145,10 +147,11 @@ h3  {
 
 }
 
-#userGreeting {
+.userGreeting {
     text-align: center;
     font-family: "Avenir", "Montserrat";
     font-size: 15px;
+    margin-top: 8px;
 }
 
 form#submit_form {
