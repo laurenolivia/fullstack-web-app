@@ -31,6 +31,7 @@ body, html{
 #logoutBtn {
     margin-left: 90%;
     margin-top: 1%;
+
     
 }
 
@@ -155,12 +156,13 @@ h3  {
     font-size: 25px;
     margin-top: 8px;
     text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 #userInstructions {
     text-align: center;
     font-family: "Avenir", "Montserrat";
-    font-size: 15px;
+    font-size: 13px;
     margin-top: 8px;   
 }
 
@@ -202,4 +204,10 @@ form#submit_form {
 #t4 {
     float: right;
 }
+
+#submit_data.container{
+    
+}
+
+
 

@@ -192,7 +192,7 @@ def get_user_data():
     result = {"data": dlist}        
 
         
-    print result     
+    # print result    
     return jsonify(result)
     
 
