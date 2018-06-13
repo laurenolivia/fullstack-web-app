@@ -148,11 +148,20 @@ h3  {
 
 }
 
-.userGreeting {
+#userGreeting {
+    text-align: center;
+    font-family: "Avenir", "Montserrat";
+    color: #6BAB90;
+    font-size: 25px;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+#userInstructions {
     text-align: center;
     font-family: "Avenir", "Montserrat";
     font-size: 15px;
-    margin-top: 8px;
+    margin-top: 8px;   
 }
 
 form#submit_form {
@@ -175,5 +184,22 @@ form#submit_form {
     font-size: 40px;
     color: #6BAB90;
 
+}
+
+#t1 {
+    float: left;
+}
+
+#t2 {
+    float: right;
+
+}
+
+#t3 {
+    float: left;
+}
+
+#t4 {
+    float: right;
 }
 
