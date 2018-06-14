@@ -28,7 +28,7 @@
 <!-- this form had an action of /user_account and method = POST -->
 <form id="submit_form" action="/user_account" method="POST"> 
   <div  class="poop_form container">
-    <div class="row">
+    <div class="row rowDimensions">
       <div class="col category">Constipated</div>
 <!--     <div class="poop_img col" id="t1FAKE">  
         <div> 
@@ -256,8 +256,11 @@ getData.done(function(results){
             label: 'Poop Plotter',
             fill: false,
             showLine: false,
-            pointRadius: 8,
+            pointRadius: 6,
+            backgroundColor: "rgba(226, 235, 152, 0.8)",
+            borderColor: "rgba(107, 171, 144, 1)",
             pointBorderColor: "#6BAB90",
+            pointBackgroundColor: "#E2EB98",
             pointBorderWidth: 3,
             pointHoverRadius: 8,
             pointHoverBorderWidth: 2,
