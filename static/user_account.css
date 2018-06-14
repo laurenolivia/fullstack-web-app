@@ -161,10 +161,23 @@ h3  {
 
 #userInstructions {
     text-align: center;
-    font-family: "Avenir", "Montserrat";
-    font-size: 13px;
-    margin-top: 8px;   
+    font-family: "Montserrat";
+    font-size: 14px;
+    margin-top: 8px;
+    letter-spacing: 1px;
+    font-weight: 100px;   
 }
+
+.category {
+    font-weight: normal;
+    font-size: 15px;
+    font-family: "Montserrat";
+    background-color: #EEC8E0;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/*#ECE4B7*/
 
 form#submit_form {
     width: 70%;
@@ -177,7 +190,7 @@ form#submit_form {
 }
 
 .type_caption {
-    font-family: "Avenir", "Montserrat";
+    font-family: "Avenir";
     font-size: 18px;
 }
 
@@ -205,9 +218,7 @@ form#submit_form {
     float: right;
 }
 
-#submit_data.container{
-    
-}
+
 
 
 

@@ -13,7 +13,7 @@
 
 {% block content %}
 <p id="userGreeting">Welcome, {{ session['fname'] }}!</p>
-<p id="userInstructions">Hover over any number to identify your poop. The data you submit will appear on the chart below!</p>
+<p id="userInstructions">Hover over a number to identify your poop. The data you submit will appear on the chart below!</p>
 
 <hr>
 
@@ -29,7 +29,7 @@
 <form id="submit_form" action="/user_account" method="POST"> 
   <div  class="poop_form container">
     <div class="row">
-      <div class="col">Constipated</div>
+      <div class="col category">Constipated</div>
 <!--     <div class="poop_img col" id="t1FAKE">  
         <div> 
           <h1 class="poop_img_h1">Commonaloty</h1>
@@ -69,7 +69,7 @@
   </div>  <!--  closes Row -->
 
   <div class="row">
-    <div class="col">Normal</div>
+    <div class="col category">Normal</div>
     <div class="poop_img col" id="t3">  
       
       <div class="descriptor">
@@ -98,7 +98,7 @@
   </div>  <!--  closes Row -->
 
   <div class="row">
-    <div class="col"><p>Diarrhea</p></div>
+    <div class="col category"><p>Diarrhea</p></div>
     <div class="poop_img col" id="t5">  
       
       <div class="descriptor">
